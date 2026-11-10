@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>임세윤 포트폴리오</title>
+<meta name="description" content="임세윤 포트폴리오 — 보이지 않는 곳을 비전으로 안내하는 시스템을 만듭니다. Lumo, 디딤, 4D 햅틱 인터페이스 외.">
+<meta property="og:title" content="임세윤 포트폴리오"><meta property="og:description" content="임세윤 포트폴리오 — 보이지 않는 곳을 비전으로 안내하는 시스템을 만듭니다. Lumo, 디딤, 4D 햅틱 인터페이스 외."><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: 작품이 먼저 보이는 편집형 구성. 배경 60 : 보조 면 30 : 포인트 10.
+   레이아웃은 네 가지(큰 미디어+2단 글, 좌우 분할, 목록 행, 정의 행)를 섞어 쓰고 카드는 쓰지 않는다. */
+:root{
+  --bg:#f6f7f9; --sub:#e9ecf1; --fg:#171b23; --muted:#576070; --line:#d3d8e0;
+  --accent:#d1361d; --sel:#f6d3cc;
+  --font:"Pretendard Variable",Pretendard,"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12151b; --sub:#1b2029; --fg:#e9ebf0; --muted:#9aa3b2; --line:#2b323d; --accent:#ff6f52; --sel:#5a2a22; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12151b; --sub:#1b2029; --fg:#e9ebf0; --muted:#9aa3b2; --line:#2b323d; --accent:#ff6f52; --sel:#5a2a22; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:17px;line-height:1.75;word-break:keep-all;overflow-wrap:break-word;padding:0}
+::selection{background:var(--sel);color:var(--fg)}
+html{scrollbar-color:var(--line) var(--bg)}
+a{color:inherit;text-underline-offset:.25em;text-decoration-thickness:1px}
+a:hover{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.in{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{background:var(--sub)}
+header.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:22px}
+.brand{font-weight:700;font-size:18px;text-decoration:none}
+.nav{display:flex;gap:24px;font-size:15px;color:var(--muted)}
+.nav a{text-decoration:none}
+h1{font-size:clamp(34px,6vw,62px);line-height:1.18;letter-spacing:-.035em;font-weight:700;margin:0;text-wrap:balance}
+h2{font-size:clamp(24px,3.4vw,32px);line-height:1.3;letter-spacing:-.025em;font-weight:700;margin:0;text-wrap:balance}
+h3{font-size:19px;line-height:1.4;margin:0;font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+.lead{font-size:19px;color:var(--muted);max-width:34em;margin-top:24px}
+.hero{padding-block:72px 64px}
+.hero h1{animation:rise .7s cubic-bezier(.2,.7,.2,1)}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.rows{margin-top:48px;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:7em minmax(0,1fr);gap:4px 24px;padding-block:14px;border-bottom:1px solid var(--line);align-items:baseline}
+.row dt{color:var(--muted);font-size:15px}
+.row dd{margin:0}
+.row dd b{font-weight:700}
+.row dd span{color:var(--muted);font-size:15px;margin-left:.5em}
+section.pad{padding-block:80px}
+.sechead{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:40px}
+.muted{color:var(--muted)}
+.small{font-size:15px}
+.media{background:var(--sub);border-radius:6px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--muted);font-size:15px;width:100%}
+.band .media{background:var(--bg)}
+a.work{display:block;text-decoration:none;color:inherit}
+a.work:hover h3,a.work:hover h2{color:var(--accent)}
+/* 대표 1: 큰 미디어 위, 아래 2단 글 */
+.w1 .txt{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:24px 56px;margin-top:28px}
+.w1 h2{margin-bottom:12px}
+.stack{display:grid;gap:4px;font-size:15px;color:var(--muted)}
+.stack b{color:var(--fg);font-weight:500}
+/* 대표 2: 좌우 분할 */
+a.work.w2{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:24px 56px;align-items:center;margin-top:96px}
+.w2 h2{margin-bottom:12px}
+/* 그 밖의 프로젝트: 목록 행 */
+.list a{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr) 8.5em;gap:4px 28px;align-items:baseline;padding-block:18px;border-top:1px solid var(--line);text-decoration:none}
+.list a:last-child{border-bottom:1px solid var(--line)}
+.list a:hover h3{color:var(--accent)}
+.list .yr{font-size:15px;color:var(--muted);white-space:nowrap;text-align:right}
+.skills .row{grid-template-columns:7em minmax(0,1fr)}
+footer.end{padding-block:40px;display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;font-size:15px;color:var(--muted)}
+button.link{font:inherit;color:inherit;background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:.25em;cursor:pointer}
+button.link:hover{color:var(--accent)}
+/* 상세 */
+.back{display:inline-block;font-size:15px;color:var(--muted);text-decoration:none;padding-block:8px}
+.dhead{padding-block:40px 56px}
+.dhead h1{font-size:clamp(32px,5.2vw,52px)}
+.dhead .lead{margin-top:20px}
+.sec{display:grid;grid-template-columns:11em minmax(0,1fr);gap:12px 40px;padding-block:44px;border-top:1px solid var(--line)}
+.sec>h2{font-size:19px;letter-spacing:-.01em;line-height:1.5}
+.body{max-width:42em;display:grid;gap:14px}
+.body ul{margin:0;padding-left:1.2em;display:grid;gap:10px}
+.body code{font-size:.92em;background:var(--sub);padding:.1em .35em;border-radius:3px}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 32px;max-width:none}
+.cols h3{font-size:17px;margin-bottom:4px;color:var(--accent)}
+.cols p{font-size:16px;color:var(--muted)}
+.res{display:grid;gap:10px;max-width:none}
+.res li{list-style:none}
+.res b{font-size:20px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.res ul{padding:0}
+.tw{overflow-x:auto;max-width:44em}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{padding:10px 14px 10px 0;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap;font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:500;color:var(--muted)}
+.bars{display:grid;gap:10px;max-width:44em}
+.bar{display:grid;grid-template-columns:5em 1fr 5.5em;gap:12px;align-items:center;font-size:15px;font-variant-numeric:tabular-nums}
+.bar i{display:block;height:10px;background:var(--accent);border-radius:2px;min-width:2px}
+.bar span:last-child{text-align:right}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:none}
+.memo{background:var(--sub);border-radius:6px;padding:16px 18px;font-size:15px;color:var(--muted);max-width:42em;margin-bottom:56px}
+.memo b{color:var(--fg)}
+.tag{display:inline-block;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 10px;margin:0 6px 6px 0}
+.next{display:block;text-decoration:none;border-top:1px solid var(--line);padding-block:32px 8px}
+.next small{display:block;font-size:15px;color:var(--muted)}
+.next h2{margin-top:4px}
+.next:hover h2{color:var(--accent)}
+body.clean .memo,body.clean .media{display:none}
+@media (max-width:760px){
+  body{font-size:16px}
+  .hero{padding-block:48px 40px}
+  .w1 .txt,.w2{grid-template-columns:minmax(0,1fr)}
+  .w2{margin-top:64px}
+  .list a{grid-template-columns:minmax(0,1fr)}
+  .sec{grid-template-columns:minmax(0,1fr);padding-block:32px}
+  .cols{grid-template-columns:minmax(0,1fr)}
+  .row{grid-template-columns:5.5em minmax(0,1fr);gap:4px 16px}
+  section.pad{padding-block:56px}
+}
+@media (prefers-reduced-motion:reduce){.hero h1{animation:none}}
+/* 그림·파이프라인 */
+.sec.wide{grid-template-columns:minmax(0,1fr);gap:20px}
+.sec.wide .body{max-width:none}
+.fig{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:8px;padding:12px}
+.fig svg{display:block;width:100%;min-width:780px;height:auto}
+.fighint{display:none;font-size:13px;color:var(--muted)}
+.d-band{fill:var(--sub)}
+.d-box{fill:var(--bg);stroke:var(--line);stroke-width:1.2}
+.d-me{fill:var(--bg);stroke:var(--accent);stroke-width:2.2}
+.d-grp{fill:none;stroke:var(--line);stroke-width:1.2;stroke-dasharray:5 4}
+.d-grpme{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-dasharray:6 4}
+.d-dash{fill:var(--bg);stroke:var(--muted);stroke-width:1.2;stroke-dasharray:4 3}
+.d-t{fill:var(--fg);font:600 14px var(--font)}
+.d-s{fill:var(--muted);font:12px var(--font)}
+.d-l{fill:var(--muted);font:600 12px var(--font);letter-spacing:.02em}
+.d-la{fill:var(--accent);font:600 12px var(--font);letter-spacing:.02em}
+.d-a{stroke:var(--muted);stroke-width:1.5;fill:none}
+.d-ad{stroke-dasharray:5 4}
+.d-ah{fill:var(--muted)}
+.chain{display:flex;gap:8px;align-items:stretch;max-width:none}
+.chain .st{flex:1 1 0;min-width:0;background:var(--sub);border-radius:6px;padding:12px 14px}
+.chain .st b{display:block;font-size:15px;line-height:1.4}
+.chain .st span{display:block;margin-top:4px;font-size:13.5px;line-height:1.5;color:var(--muted)}
+.chain .st.me{box-shadow:inset 0 0 0 2px var(--accent)}
+.chain .ar{align-self:center;color:var(--muted);font-size:15px;flex:none}
+.chain .ar::before{content:"→"}
+.stk{display:flex;height:36px;border-radius:4px;overflow:hidden;max-width:44em;background:var(--sub)}
+.stk i{display:flex;align-items:center;justify-content:center;font-style:normal;font-size:13px;font-weight:600;color:var(--bg);white-space:nowrap;overflow:hidden;font-variant-numeric:tabular-nums}
+.stk .a,.lg .a{background:var(--accent)}
+.stk .b,.lg .b{background:var(--muted)}
+.stk .c,.lg .c{background:var(--line)}
+.lg{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;max-width:44em}
+.lg span{display:inline-flex;align-items:center;gap:8px}
+.lg em{display:inline-block;width:10px;height:10px;border-radius:2px}
+.lg b{color:var(--fg);font-weight:600}
+.bargroup{display:grid;gap:8px}
+@media (max-width:760px){
+  .fighint{display:block}
+  .chain{flex-direction:column}
+  .chain .ar::before{content:"↓"}
+}
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+/* 프로젝트 내용은 여기 데이터만 고치면 된다. [대괄호] 표시는 직접 채워야 하는 부분. */
+var PROFILE = {
+  name: "임세윤",
+  role: "AI·비전 엔지니어 지망",
+  headline: "보이지 않는 곳을 비전으로 안내하는 시스템을 만듭니다",
+  lead: "시각장애인 커뮤니티 공모전에서 접근성에 관심을 갖게 됐고, 캡스톤에서 저시력자용 탐색 시스템 Lumo로 교내 금상과 논문 투고까지 이어갔습니다. 지금은 Lumo를 스마트폰 앱으로, 몸의 움직임을 읽는 포즈 모델을 스쿼시 코칭으로, 영상을 이해해 촉각으로 바꾸는 작업을 4D 기기로 각각 넓혀가고 있습니다.",
+  awards: [
+    ["숭실대 AI 소프트웨어 공모전 금상", "숭실대학교 AI대학 주최 · 팀 (Lumo)", "2026"],
+    ["캡스톤 경진대회 장려상", "팀 (Lumo)", "2026"],
+    ["현대오토에버 배리어프리 앱개발 콘테스트 7팀 선발", "팀명 '보여요' · 2027.1.13 발표 후 종료 예정", "2026"],
+    ["논문 공동 1저자", "CHI · ICLR 투고, 심사 중 (Lumo)", "논문"]
+  ],
+  skills: [
+    ["Vision", "YOLO(v1·v8·YOLOE·Pose), 자세 추정, 깊이 카메라(RealSense), 카메라·프로젝터 캘리브레이션, SLAM(ARKit), VLM(Qwen3-VL, Qwen2.5-Omni)"],
+    ["ML", "PyTorch, 전이학습(EfficientNet, ResNet), 데이터 증강, LightGBM, HMM, scikit-learn"],
+    ["Speech/Signal", "Whisper, 웨이크워드 · STT 파이프라인, onset 검출, 광학 흐름"],
+    ["Dev", "Python, OpenCV, Flask, MySQL, Android(Java), Node.js, Express, Socket.io, Git"]
+  ],
+  github: "https://github.com/dlsy4501"
+};
+
+/* 구조도 그리는 도우미. 좌표는 viewBox 기준. */
+function esc(t){ return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function bx(x,y,w,h,lines,cls){
+  var n=lines.length, total=18+16*(n-1), ty=y+h/2-total/2+13, cx=x+w/2;
+  var s='<rect class="'+(cls||"d-box")+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="6"/>';
+  lines.forEach(function(t,i){ s+='<text class="'+(i?"d-s":"d-t")+'" x="'+cx+'" y="'+(i?ty+4+16*i:ty)+'" text-anchor="middle">'+esc(t)+'</text>'; });
+  return s;
+}
+function ar(d,id,dash,nohead){ return '<path class="d-a'+(dash?" d-ad":"")+'" d="'+d+'"'+(nohead?"":' marker-end="url(#'+id+')"')+'/>'; }
+function lb(x,y,t,cls,anchor){ return '<text class="'+(cls||"d-l")+'" x="'+x+'" y="'+y+'" text-anchor="'+(anchor||"start")+'">'+esc(t)+'</text>'; }
+function svg(w,h,id,title,body){
+  return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(title)+'"><title>'+esc(title)+'</title><defs><marker id="'+id+'" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="d-ah" d="M0 0L10 5L0 10z"/></marker></defs>'+body+'</svg>';
+}
+function legend(x,y){ return '<rect class="d-me" x="'+x+'" y="'+(y-11)+'" width="22" height="14" rx="3"/>'+lb(x+30,y,"내가 맡은 부분"); }
+
+var FIG_LUMO = (function(){
+  var A="ahL", s="";
+  s+='<rect class="d-band" x="0" y="0" width="1040" height="104" rx="8"/>'+lb(14,22,"음성 스레드");
+  s+='<rect class="d-band" x="0" y="116" width="1040" height="224" rx="8"/>'+lb(14,138,"비전 스레드");
+  s+='<rect class="d-band" x="0" y="352" width="1040" height="100" rx="8"/>'+lb(14,374,"출력 · 종료");
+  s+=legend(860,22);
+  s+=bx(30,34,150,56,["마이크","상시 청취"]);
+  s+=bx(215,34,150,56,["웨이크워드","가벼운 1단계 감지"]);
+  s+=bx(400,34,150,56,["Whisper STT","faster-whisper medium"]);
+  s+=bx(585,34,150,56,["명사구 추출","불용어 제거 → \"cup\""]);
+  s+=ar("M180 62L213 62",A)+ar("M365 62L398 62",A)+ar("M550 62L583 62",A);
+  s+=ar("M660 90L660 120L475 120L475 148",A)+lb(672,124,"텍스트 프롬프트");
+  s+=bx(30,206,150,56,["RGB-D 카메라","RealSense D455"]);
+  s+=bx(400,150,150,56,["YOLOE 분할","오픈 어휘 픽셀 마스크"]);
+  s+=bx(585,150,150,56,["마스크 위 깊이","물체 중심 o (3D)"]);
+  s+=bx(400,262,150,56,["사람·자세 추정","YOLOv8n-pose 17점"]);
+  s+=bx(585,262,150,56,["어깨 몸 좌표계","원점 m, 축 r̂ · f̂"],"d-me");
+  s+=bx(790,198,200,72,["몸 기준 방위","θ = atan2(v·r̂, v·f̂)","→ 시계 h · 거리 ‖v‖"],"d-me");
+  s+=ar("M180 234L290 234L290 178L398 178",A)+ar("M290 234L290 290L398 290",A);
+  s+=ar("M550 178L583 178",A)+ar("M550 290L583 290",A);
+  s+=ar("M735 178L762 178L762 234L788 234",A)+ar("M735 290L762 290L762 234",A,false,true);
+  s+=bx(700,384,150,56,["음성 안내","\"3시 방향, 1.2미터\""]);
+  s+=bx(870,384,150,56,["빛 투사","마스크 → 프로젝터 좌표"]);
+  s+=bx(400,384,150,56,["접촉 판정","손목–물체 ≤ 0.15 m"],"d-me");
+  s+=ar("M890 270L890 330L775 330L775 382",A)+ar("M890 330L945 330L945 382",A);
+  s+=ar("M475 318L475 382",A)+lb(485,356,"손목 키포인트");
+  s+=ar("M698 412L552 412",A)+lb(625,404,"안내 중","d-l","middle");
+  s+=ar("M398 412L16 412L16 62L28 62",A,true)+lb(207,404,"접촉 → 대기, 마이크 다시 열림","d-la","middle");
+  return svg(1040,452,A,"Lumo 시스템 구조도",s);
+})();
+
+var FIG_4D = (function(){
+  var A="ah4", s="";
+  s+=legend(800,30);
+  s+=bx(10,205,100,60,["영상 mp4","라벨 없음"]);
+  s+='<rect class="d-grpme" x="130" y="10" width="240" height="450" rx="10"/>'+lb(146,34,"① 지각 층 · 고정 모델","d-la");
+  var ys=[48,132,216,300,384];
+  var P=[["Qwen3-VL-4B","장면 의미 · 질문 15개"],["Qwen2.5-Omni-3B","음악·대사 판별 · 질문 7개"],["onset 검출","소리 시작 · 10ms, 40대역"],["PE-A-Frame","소리 종류 · 40ms, 12종"],["광학 흐름","Farneback · 움직임·흔들림"]];
+  ys.forEach(function(y,i){ s+=bx(150,y,200,60,P[i],"d-me"); s+=ar("M124 "+(y+30)+"L148 "+(y+30),A); s+=ar("M350 "+(y+30)+"L380 "+(y+30),A,false,true); });
+  s+=ar("M110 235L124 235",A,false,true)+ar("M124 78L124 414",A,false,true)+ar("M380 78L380 414",A,false,true);
+  s+='<rect class="d-grp" x="400" y="10" width="220" height="450" rx="10"/>'+lb(416,34,"② 결합 층 · 학습");
+  s+=bx(415,110,190,72,["이벤트 선택기","LightGBM (GBDT)","→ 순간 진동"]);
+  s+=bx(415,240,190,72,["상태 추적기","구간 분류 + HMM","→ 럼블·바람·온냉"]);
+  s+=bx(415,372,190,60,["지금 동작 중","가중합 Baseline + Omni 필터"],"d-dash");
+  s+=ar("M380 146L413 146",A)+ar("M380 276L413 276",A);
+  s+=bx(650,200,120,72,["track.json","진동 이벤트·구간","LED·전송 시각"]);
+  s+=ar("M605 146L630 146L630 276L605 276",A,false,true)+ar("M605 402L630 402L630 276",A,true,true)+ar("M630 236L648 236",A);
+  s+=lb(710,296,"GPU에서 1회 분석","d-l","middle");
+  s+=bx(800,192,150,88,["③ 구동 층","재생 PC · 규칙","반응 속도만큼","앞당겨 전송"]);
+  s+=ar("M770 236L798 236",A)+lb(875,302,"GPU 필요 없음","d-l","middle");
+  s+=bx(980,100,130,72,["핸드 그립","ERM·LRA 진동","펠티어 온냉"]);
+  s+=bx(980,200,130,72,["바람 모듈","PWM 팬"]);
+  s+=bx(980,300,130,72,["LED 모듈","SK6812 RGBW"]);
+  s+=ar("M950 236L965 236",A,false,true)+ar("M965 136L965 336",A,false,true);
+  s+=ar("M965 136L978 136",A)+ar("M965 236L978 236",A)+ar("M965 336L978 336",A)+lb(965,90,"BLE","d-l","middle");
+  return svg(1120,470,A,"개인형 4D 기기 시스템 구조도",s);
+})();
+
+var FIG_SQUASH = (function(){
+  var A="ahS", s="";
+  s+='<rect class="d-band" x="0" y="0" width="1040" height="108" rx="8"/>'+lb(14,22,"선수 · 이동");
+  s+='<rect class="d-band" x="0" y="120" width="1040" height="120" rx="8"/>'+lb(14,142,"타격 검출");
+  s+='<rect class="d-band" x="0" y="252" width="1040" height="120" rx="8"/>'+lb(14,274,"공 보정");
+  s+='<rect class="d-band" x="0" y="384" width="1040" height="104" rx="8"/>'+lb(14,406,"랠리 · 득점");
+  s+='<rect class="d-me" x="700" y="11" width="22" height="14" rx="3"/>'+lb(730,22,"공 궤적으로 타격을 보정하는 부분");
+  s+=bx(30,34,130,60,["영상","고정 카메라"]);
+  s+=bx(190,34,170,60,["선수 검출·추적","YOLO11n-pose, 선수 2명"]);
+  s+=bx(390,34,170,60,["코트 좌표로 변환","호모그래피 · 점 4~5개"]);
+  s+=bx(590,34,170,60,["이동 거리 · 속도","평활화, 2m↑ 점프는 무시"]);
+  s+=ar("M160 64L188 64",A)+ar("M360 64L388 64",A)+ar("M560 64L588 64",A);
+  s+=bx(190,162,170,60,["손목 키포인트","신뢰도 0.3 이상"]);
+  s+=bx(390,162,170,60,["스윙 속도","몸통 길이로 정규화"]);
+  s+=bx(590,162,170,60,["속도 피크 → 타격 후보","최소 간격 0.7초"]);
+  s+=bx(790,162,220,60,["타격 확정","스윙 + 공 합치기","연습 스윙 제거"],"d-me");
+  s+=ar("M275 94L275 160",A);
+  s+=ar("M360 192L388 192",A)+ar("M560 192L588 192",A)+ar("M760 192L788 192",A);
+  s+=bx(30,288,160,60,["공 탐지","YOLO11n 파인튜닝"],"d-me");
+  s+=bx(215,288,180,60,["궤적 정리","연속성 · 튀는 점 제거 · 보간"],"d-me");
+  s+=bx(420,288,180,60,["방향 급변 검출","50° 이상 꺾이면 후보"],"d-me");
+  s+=bx(625,288,180,60,["손목과 가까우면 타격","160px 이내 → 타격자"],"d-me");
+  s+=ar("M95 94L95 286",A);
+  s+=ar("M190 318L213 318",A)+ar("M395 318L418 318",A)+ar("M600 318L623 318",A);
+  s+=ar("M805 318L900 318L900 224",A);
+  s+=bx(30,418,200,52,["랠리 분할","타격이 3초 끊기면 종료"]);
+  s+=bx(270,418,200,52,["득점자 추정","랠리 마지막 타격자"]);
+  s+=bx(510,418,200,52,["사람이 정정","랠리별 표에서 수정"]);
+  s+=bx(750,418,260,52,["오버레이 영상 + CSV","점수 · 타격 · 이동 거리 · 코트맵"]);
+  s+=ar("M1010 192L1028 192L1028 402L130 402L130 416",A);
+  s+=ar("M230 444L268 444",A)+ar("M470 444L508 444",A)+ar("M710 444L748 444",A);
+  return svg(1040,488,A,"스쿼시 경기 분석 파이프라인",s);
+})();
+
+var FIG_DIDIM = (function(){
+  var A="ahD", s="";
+  s+='<rect class="d-band" x="0" y="0" width="1040" height="108" rx="8"/>'+lb(14,22,"찾기");
+  s+='<rect class="d-band" x="0" y="120" width="1040" height="108" rx="8"/>'+lb(14,142,"기억");
+  s+='<rect class="d-band" x="0" y="240" width="1040" height="102" rx="8"/>'+lb(14,262,"안내");
+  s+='<rect class="d-band" x="0" y="354" width="1040" height="128" rx="8"/>'+lb(14,376,"출력");
+  s+=legend(860,22);
+  s+=bx(30,34,210,60,["음성 명령","\"컵 찾아줘\" · 약 80종"]);
+  s+=bx(280,34,210,60,["물체 인식","카메라 화면에서 찾기"]);
+  s+=bx(530,34,230,60,["공간 위치 추정","ARKit 월드 좌표 · 높이 포함"]);
+  s+=ar("M240 64L278 64",A)+ar("M490 64L528 64",A);
+  s+=bx(530,150,230,60,["위치 저장","SLAM 지도에 기억"],"d-me");
+  s+=bx(800,150,210,60,["벽 탐지","공간 지도 구성"],"d-me");
+  s+=ar("M645 94L645 148",A)+ar("M800 180L762 180",A);
+  s+=bx(30,274,220,60,["사용자 위치·방향","ARKit 카메라 포즈"]);
+  s+=bx(290,274,280,60,["상대 위치 계산","시계 방향 · 거리 · 바닥 기준 높이"],"d-me");
+  s+=ar("M250 304L288 304",A);
+  s+=ar("M645 210L645 238L430 238L430 272",A);
+  s+=bx(30,414,300,52,["음성 안내","\"2시 방향, 1.5미터\" · 높이 cm"]);
+  s+=bx(360,414,300,52,["진동 · 공간음향","가까울수록 진동이 빨라짐"]);
+  s+=bx(690,414,320,52,["화면 오버레이","물건이 화면에 보이면 강조"]);
+  s+=ar("M430 334L430 392",A,false,true);
+  s+=ar("M430 392L180 392L180 412",A)+ar("M430 392L510 392L510 412",A)+ar("M430 392L850 392L850 412",A);
+  return svg(1040,482,A,"디딤 앱 동작 구조도",s);
+})();
+
+var PROJECTS = [
+{
+  id:"lumo", main:true, title:"Lumo", sub:"빛으로 물체를 가리키는 저시력자용 탐색 시스템",
+  period:"2026", team:"3인 팀 '보여요'", status:"캡스톤 · 논문 투고(심사 중)", kind:"캡스톤 · 완료",
+  summary:"음성으로 물건 이름을 말하면 그 물건 위에 직접 빛을 투사하고, 몸 기준 시계 방향과 거리를 음성으로 안내합니다.",
+  tags:["YOLOE","YOLOv8n-pose","Whisper","RealSense D455","OpenCV"], hot:["금상","장려상","논문"],
+  facts:[["기간","2026"],["팀","3인, 팀명 '보여요'"],["내 역할","좌표계·방향 계산, 상태 기계 설계, 모델 분할, 논문 공동 1저자"],["성과","교내 금상 · 캡스톤 장려상(둘 다 Lumo) · CHI/ICLR 투고"]],
+  blocks:[
+   {h:"시작하게 된 계기", p:["그 전해에 참가한 시각장애인 커뮤니티 공모전(사이드임팩트 2025)에서 처음으로 장애인의 입장에서 일상을 다시 보게 됐습니다. 그 관심이 캡스톤 수업으로 이어져 Lumo를 시작했습니다."]},
+   {h:"문제", p:["저시력자는 손이 닿는 거리의 물건도 자주 놓칩니다. 기존 보조 기기는 위치를 음성으로만 알려 주거나, 카메라를 직접 겨누게 하거나, 미리 등록한 물건만 인식합니다. 남아 있는 시력은 쓰이지 않습니다."]},
+   {h:"접근", ul:[
+     "<b>오픈 어휘</b>: 물건 이름을 말하면 그 자리에서 분할해서 찾습니다. 미리 등록할 필요가 없습니다.",
+     "<b>몸 기준 안내</b>: 카메라 기준이 아니라 사용자 어깨 기준으로 방향을 계산해서, 사용자가 몸을 돌려도 \"3시 방향\"이 계속 맞습니다.",
+     "<b>닫힌 루프</b>: 손목이 물건에 닿으면 확인 음성을 내고 대기로 돌아가 안내가 스스로 끝납니다.",
+     "<b>두 채널</b>: 음성과 물건 위의 투사광을 동시에 씁니다. 둘 중 하나만 있어도 쓸 수 있습니다."]},
+   {h:"시스템 구조", fig:FIG_LUMO, cap:"논문 Figure 3을 바탕으로 다시 그린 구조도입니다. 음성 스레드는 명사구 하나만 비전 스레드에 넘기고, 검출·자세·깊이가 하나의 몸 기준 방위로 모인 뒤 음성과 빛 두 채널로 동시에 나갑니다. 점선은 접촉이 확인되면 대기로 돌아가는 복귀 경로입니다."},
+   {h:"동작 흐름", flow:[["STANDBY","웨이크워드를 기다립니다. 투사는 꺼져 있고 마이크가 열려 있습니다."],["ACTIVE","사용자와 물건이 모두 화면에 있을 때만 시작합니다. 음성 안내와 투사가 켜지고 마이크는 닫힙니다."],["FEEDBACK","손목-물건 접촉을 감지하면 한 번 확인 음성을 내고 STANDBY로 돌아갑니다."]]},
+   {h:"내가 한 일", ul:[
+     "사람 어깨 관절 키포인트에서 <b>사용자 중심 새 좌표계</b>를 구현했습니다(어깨 중점을 원점, 어깨선을 오른쪽 축으로).",
+     "그 좌표계로 물건의 <b>방향(시계 시각)과 거리</b>를 매 프레임 계산해 안내하는 기능을 구현했습니다.",
+     "<b>대기 → 탐색 → 안내 → 종료</b> 구조(상태 기계)를 설계했습니다.",
+     "인식·자세·음성 모델을 역할별로 분할하는 구성에 참여했습니다.",
+     "논문 작성에 공동 1저자로 참여했습니다."]},
+   {h:"기술 상세", ul:[
+     "<b>음성 입력</b>: 가벼운 웨이크워드 단계만 상시로 돌리고, 감지되면 무거운 STT(faster-whisper medium, translate)가 한국어 발화를 영어 명사구로 바꿔 검출 프롬프트로 넘깁니다. VAD로 구간을 자르고 불용어 사전으로 \"찾아줘\" 같은 말을 걷어냅니다.",
+     "<b>스레드 분리</b>: 단일 스레드 버전에서 (1) 음성 처리가 메인 루프를 막아 화면이 멈추고, (2) 웨이크워드와 STT가 하드웨어를 두고 경합하고, (3) 시스템 자신의 음성 출력을 명령으로 다시 알아듣는 문제가 한꺼번에 생겨, 음성과 비전을 별도 비동기 스레드로 나눴습니다. 물건이 처음 검출되면 마이크를 닫고, 확인 음성이 끝나거나 5초간 물건을 놓치면 다시 엽니다.",
+     "<b>오픈 어휘 분할</b>: YOLOE가 텍스트 프롬프트로 박스가 아닌 <b>픽셀 마스크</b>를 돌려줍니다. 이 마스크가 곧 빛의 모양이 되기 때문에, 박스였다면 주변 표면까지 빛이 번졌을 겁니다. 같은 이름의 물건이 여럿이면 카메라에 가장 가까운 것을 비춥니다.",
+     "<b>몸 기준 방위</b>: 픽셀과 깊이를 카메라 내부 파라미터로 3D로 역투영하고, 양 어깨의 중점 m을 원점으로, 수평면(XZ)에서 어깨선 방향을 r̂, 그 수직을 f̂로 둡니다. 물체까지의 수평 오프셋 v에 대해 <code>θ = atan2(v·r̂, v·f̂)</code>, <code>h = ((⌊θ/30°⌉ − 1) mod 12) + 1</code>로 시계 시각을, <code>‖v‖</code>로 거리를 구합니다. 매 프레임 어깨에서 다시 계산하므로 사용자가 돌아서도 12시는 늘 사용자 정면입니다. 어깨 신뢰도가 0.4 미만이면 틀린 방향보다 침묵이 낫다고 보고 안내를 멈춥니다.",
+     "<b>두 채널 출력</b>: 음성은 크기가 제한된 큐로 비동기 합성하고, 큐가 차면 비전 루프를 막지 않고 버립니다. 시계 시각이 바뀌고 2초 이상 지났을 때만 말합니다. 빛은 마스크 픽셀마다 왜곡 보정 → 역투영 → 캘리브레이션한 (R, t)로 프로젝터 좌표계 이동 → 프로젝터 내부 파라미터로 투영한 뒤, 9×9 타원 커널로 닫힘 연산을 해서 한 덩어리로 비춥니다.",
+     "<b>접촉 판정</b>: 손목 키포인트와 물체 중심의 3D 거리가 0.15 m 이하면 접촉으로 봅니다. 몸 전체가 아니라 손목을 쓰는 이유는 테이블 위로 몸을 숙이기만 해도 안내가 끝나버리는 것을 막기 위해서입니다. 손이 물건을 가리거나 손목 신뢰도가 떨어지는 순간을 위해, 사람 박스 중앙의 깊이와 물체의 마지막 깊이를 비교하는 대체 경로를 둡니다.",
+     "<b>견고성 · 프라이버시</b>: 신뢰도 0.10 미만 검출과 0.4 미만 자세는 안내에서 빼고, 추론 오류가 나면 종료하지 않고 그 프레임만 건너뜁니다. 모든 처리는 호스트 한 대에서 이루어지고 영상·음성은 밖으로 나가지 않습니다."]},
+   {h:"구현 (레포 기준)", ul:[
+     "Python 약 6,000줄, 모듈 구성: 음성(<code>stt</code>), 분할(<code>vision</code>), 깊이(<code>depth</code>), 사람 탐지(<code>human_detector</code>), 접촉 상태 기계(<code>interaction</code>), 프로젝터 좌표 변환(<code>projector</code>), 음성 출력(<code>tts</code>).",
+     "실행 모드를 나눠(<code>live</code> · <code>boyeoyo</code> · <code>integrated</code> · <code>test</code>) 장비 없이도 이미지 한 장으로 파이프라인을 검증할 수 있게 했습니다.",
+     "방향 안내는 어깨 키포인트에서 오른쪽·정면 단위벡터를 만들고 물체 벡터를 분해해 <code>atan2</code>로 시계 방향을 구하며, 방향이 바뀌고 최소 2초가 지났을 때만 말합니다.",
+     "카메라-프로젝터 캘리브레이션은 9×6 체커보드(40mm)와 Gray-code 구조광으로 별도 패키지(<code>calibration/</code>)로 구현했습니다. 설치·사용 매뉴얼 문서도 있습니다.",
+     "웨이크워드 → Whisper(medium) 음성 인식 → 명사구 추출 → YOLOE 프롬프트로 이어지는 음성 입력부를 별도 스레드로 분리했습니다."]},
+   {h:"캘리브레이션 파이프라인", chain:[["체커보드 촬영","9×6 내부 코너를 서브픽셀로 검출"],["Gray-code 투사","가로 11비트·세로 10비트, 정·반전 44장"],["직접·간접광 분리","믿기 어려운 픽셀 제거"],["국소 호모그래피","코너 주변 47×47 패치, RANSAC"],["내부 파라미터","calibrateCamera, 카메라·프로젝터 각각"],["외부 파라미터","stereoCalibrate, 15 px 넘는 자세 빼고 재추정"]],
+     ul:["Moreno·Taubin 방식대로 프로젝터를 '거꾸로 된 카메라'로 모델링하고, 카메라가 직접 볼 수 없는 대응점을 Gray-code 패턴으로 복원합니다.",
+       "촬영 조건 세 가지를 고정했습니다. 정·반전 패턴 사이에 노출이 달라지지 않도록 자동 노출과 화이트밸런스를 끄고, 디코딩을 방해하는 깊이 카메라의 적외선 도트를 끄고, 방을 어둡게 했습니다.",
+       "흔한 관행과 다르게 고른 것도 있습니다. 프로젝터 렌즈에도 4계수 왜곡 모델을 추정하고(k3는 과적합 방지로 0 고정), 원 논문에서 과적합으로 정확도가 떨어졌다고 보고한 마지막 번들 조정은 뺐습니다.",
+       "유효 픽셀이 5% 미만인 자세는 촬영할 때 바로 버리고, 자세가 8장 미만이면 풀지 않습니다."],
+     table:{cap:"촬영 자세 수에 따른 스테레오 RMS (2 m에서 측정, 논문 Table 2)", head:["자세 수","12","16","20","24","28"],rows:[["스테레오 RMS (px)","8.84","7.66","6.70","7.69","7.15"]]},
+     p2:["자세를 늘린다고 오차가 계속 줄지는 않았습니다. 20장에서 가장 낮았다가 24장에서 다시 올랐습니다. 오차는 개수보다 자세의 다양성과 품질에 좌우되므로, 설치하는 사람에게 \"더 많이\"가 아니라 \"보드 방향과 위치를 다양하게\" 찍으라고 안내해야 한다고 정리했습니다. 근거리 카메라 RMS 0.1386 px는 원 논문 방식의 0.3288 px보다 낮습니다."]},
+   {h:"결과", big:[["0.26 px","근거리 스테레오 재투영 오차"],["≈ 3 fps","검출·자세·깊이·투사 전체 루프"],["5.39 s","발화 종료부터 첫 투사까지 (기록한 1회)"],["98 %","그 지연 중 STT·검출 두 추론 단계 비중"]],
+     table:{cap:"캘리브레이션 촬영 거리별 재투영 오차 RMS (px, 논문 Table 1)", head:["","근거리 0.75m","중간 1.5m","원거리 2.5m"],rows:[["카메라","0.1386","1.1844","6.2602"],["프로젝터","0.2861","2.7619","15.8473"],["스테레오","0.2620","2.2507","12.2483"]]},
+     bars:{cap:"스테레오 RMS: 거리가 3.3배 늘면 오차는 47배", rows:[["0.75 m",0.262,"0.26 px"],["1.5 m",2.2507,"2.25 px"],["2.5 m",12.2483,"12.25 px"]],max:12.2483},
+     p2:["이 결과로 \"캘리브레이션은 근거리에서 한 번 하라\"는 설치 규칙을 도출했습니다. 내부·외부 파라미터는 거리와 무관하므로, 근거리에서 구한 값을 실행 중에는 어느 거리에서나 그대로 씁니다.","저시력 사용자 평가는 아직 하지 않았고 이후 과제입니다. 논문도 이 한계를 본문에서 직접 밝힙니다."]},
+   {h:"지연 분해", stack:{total:5.388, segs:[["음성 인식 (Whisper)",3.158,"a"],["오픈 어휘 검출",2.124,"b"],["투사 렌더링",0.100,"c"],["음성 구간 검출",0.006,"c"]], cap:"발화 종료부터 첫 투사까지 5.39초 (M1 Max, 기록 1회, 논문 Table 3). 그 앞의 2.5초 명령 녹음 창은 설정값이라 뺐습니다."},
+     p2:["두 추론 단계가 98%를 차지했고, 가장 큰 항목은 비전이 아니라 음성 인식이었습니다. 기록이 남은 4회를 보면 STT는 같은 기기에서 3.05~3.16초로 거의 일정했지만 M2 Air에서는 7.0초로 두 배가 넘었습니다(기기에 좌우). 반면 검출은 0.78~2.28초로 같은 기기 안에서도 크게 달랐습니다(장면에 좌우). 그래서 지연을 평균 하나로 말하지 않고 회차별로 보고했습니다."]},
+   {h:"이후 갈래", p:["Lumo는 두 방향으로 다음 프로젝트를 낳았습니다. 카메라가 고정 설치돼야 하는 공간 제약은 스마트폰 앱 '디딤'으로, 사용자 기준 방향 안내를 구현하며 알게 된 YOLO Pose 모델은 스쿼시 자세 교정 프로젝트로 이어졌습니다."]},
+   {h:"논문", p:["\"Pointing with Light: Projected Guidance for Object Search by People with Low Vision\" (CCS: Accessibility technologies / Interaction devices). 더블 블라인드 리뷰로 저자명은 비공개 상태로 투고돼 있습니다. PDF는 프로젝트 파일에 있습니다."]},
+   {h:"사진 · 영상", ph:["시연 영상 또는 GIF 넣기 (주전자에 빛이 투사되는 장면) — 구글 드라이브 '캡스톤디자인' 공유 폴더에 있음, 공유 설정 확인 후 링크로 교체","장비 배치 사진 넣기 (RealSense + 프로젝터)"]}
+  ],
+  todo:"[시연 영상은 구글 드라이브 캡스톤디자인 폴더에 있다고 하셨는데 이 세션에서는 자동으로 못 찾았습니다. 직접 링크를 공유해주시면 넣을게요. 논문 심사 결과가 나오면 업데이트하세요.]"
+},
+{
+  id:"didim", main:true, title:"디딤", sub:"저시력자 물건 찾기 — Lumo를 스마트폰 앱으로 옮긴 후속 프로젝트, 앱스토어 출시",
+  period:"2026 ~ 2027.1", team:"Lumo와 동일한 3인 팀 '보여요'", status:"앱스토어 출시 · 2027.1.13 발표 후 콘테스트 종료 예정", kind:"공모전 · 출시됨",
+  summary:"\"컵 찾아줘\"라고 말하면 방향과 거리를 음성·진동으로 알려주는 저시력자용 물건 찾기 앱입니다. 고정 장비 없이 스마트폰만으로 Lumo의 기능을 구현했습니다. 팀명은 Lumo와 같은 '보여요', 앱 이름은 '디딤'입니다.",
+  tags:["ARKit","SLAM","iOS","Swift"], hot:["앱스토어 출시","7팀 선발"],
+  facts:[["기간","2026 ~ 2027.1.13 발표"],["팀","보여요 (Lumo와 동일한 3인)"],["내 역할","SLAM 기반 위치 저장·안내, 벽 탐지 지도 구성"],["플랫폼","iOS 16+ · ARKit 지원 기기"],["앱스토어","무료 · 유틸리티 · 전체 이용가 · 51.4MB"]],
+  blocks:[
+   {h:"배경", p:["Lumo는 카메라가 설치된 공간에서만 쓸 수 있어 실내·고정 장소로 제약이 있었습니다. 보여요 팀은 누구나 일상적으로 쓰는 스마트폰만으로 같은 기능을 구현하고 싶어서 현대오토에버 배리어프리 앱개발 콘테스트에 '디딤'으로 지원했고, 2026년에 앱스토어에 정식 출시했습니다."]},
+   {h:"지원 과정", p:["콘테스트의 1박 2일 배리어프리 교육캠프에 참가해 장애인의 스마트폰 사용 방식과 배리어프리 전반을 직접 배웠습니다. 이 경험이 이후 기능 설계에도 영향을 줬습니다."]},
+   {h:"기능 (앱스토어 설명 기준)", ul:[
+     "<b>음성으로 찾기</b>: \"컵 찾아줘\"처럼 말하면 컵·병·의자·노트북·휴대폰·리모컨 등 약 80종의 생활 물건을 찾습니다.",
+     "<b>방향·거리 안내</b>: \"2시 방향, 1.5미터\"처럼 시계 방향과 거리로 안내하고, 가까워질수록 진동이 빨라집니다. 이어폰을 쓰면 물건이 있는 쪽에서 소리가 나도록 공간음향을 씁니다.",
+     "<b>화면 밖에서도 안내</b>: 지금 화면에 물건이 없어도, 예전에 한 번이라도 비춘 적이 있다면 그 위치를 공간에 저장해 두고 방향·거리를 계속 안내합니다. 높은 곳의 물건은 바닥에서부터의 높이(cm)도 알려줍니다.",
+     "<b>직접 등록</b>: 기본 목록에 없는 물건은 \"이거 기억해줘\"로 등록하고 \"내 지갑 찾아줘\"처럼 불러 찾습니다. 원본 사진은 저장하지 않고 작은 썸네일과 형태 특징만 기기에 보관합니다.",
+     "<b>저시력 접근성</b>: 고대비 색상, 글자 크기 80~180% 조절, 강조색 직접 선택, VoiceOver 라벨을 지원합니다.",
+     "<b>빠른 실행</b>: 아이폰 백탭, 액션 버튼, Siri 단축어(\"물건 찾기 시작\"), 볼륨 버튼 길게 누르기로 앱을 열지 않고도 바로 실행할 수 있습니다.",
+     "<b>프라이버시</b>: 카메라·공간 데이터는 기기 안에서만 처리·저장되고, 회원가입이나 광고·추적 없이 동작합니다. 앱스토어 개인정보 라벨도 \"데이터가 수집되지 않음\"으로 표시돼 있습니다."]},
+   {h:"내가 맡은 부분", ul:[
+     "<b>SLAM</b>(ARKit)으로 공간 안에서 물건의 위치를 앱에 저장합니다.",
+     "물건이 <b>화면에 보이지 않아도</b> 저장된 위치를 기준으로 사용자에게 방향을 안내합니다.",
+     "<b>벽을 탐지</b>해 공간 지도를 구성합니다."]},
+   {h:"앱 동작 구조", fig:FIG_DIDIM, cap:"앱스토어 설명과 담당 범위를 바탕으로 그린 구조도입니다. 인식 모델 종류와 깊이 추정 방식 같은 세부 구현은 레포를 확인한 뒤 보강합니다."},
+   {h:"기술 상세", ul:[
+     "<b>화면 밖 물건 안내</b>: 한 번이라도 카메라에 비친 물건은 그때의 공간 위치를 ARKit 월드 좌표에 저장해 두고, 이후에는 화면에 없어도 사용자의 현재 위치·방향과 비교해 방향과 거리를 계속 안내합니다.",
+     "<b>안내 형식</b>: Lumo와 같은 시계 방향 방식으로 \"2시 방향, 1.5미터\"처럼 말하고, 높은 곳의 물건은 바닥에서부터의 높이(cm)도 알려줍니다.",
+     "<b>세 가지 채널</b>: 음성 안내, 진동(가까워질수록 빨라짐), 공간음향(이어폰을 쓰면 물건이 있는 쪽에서 소리가 남)으로 알려주고, 물건이 화면에 보이면 화면 위에 오버레이로 강조합니다. 시각에 의존하지 않아도 되도록 채널을 나눈 구성입니다.",
+     "<b>벽 탐지·공간 지도</b>: 벽을 탐지해 공간 지도를 구성합니다.",
+     "<b>직접 등록</b>: 기본 목록(약 80종)에 없는 물건은 \"이거 기억해줘\"로 등록합니다. 원본 사진은 저장하지 않고 작은 썸네일과 형태 특징만 기기에 보관해 프라이버시를 지킵니다.",
+     "<b>온디바이스</b>: 카메라·공간 데이터를 기기 밖으로 보내지 않고, 회원가입·광고·추적 없이 동작합니다. 앱스토어 개인정보 라벨도 \"데이터가 수집되지 않음\"입니다."]},
+   {h:"사진 · 영상", ph:["앱스토어 스크린샷 넣기 (6장 있음, 캡션은 비어 있어 직접 설명 필요)","지도 구성 / 안내 데모 영상 넣기"]}
+  ],
+  todo:"[레포가 비공개라 아직 코드로 확인 못했습니다. 앱스토어 개발자 계정은 팀원(Sangjun Lee=이상준으로 추정) 명의로 등록돼 있습니다. 1월 발표가 끝나면 최종 결과로 업데이트하세요.]"
+},
+{
+  id:"haptic4d", main:true, title:"개인형 4D 기기 제작", sub:"영상 이해 기반 4D 효과 자동 생성 및 다감각 햅틱 인터페이스",
+  period:"2026.9 ~ 2026.12", team:"팀 '트민남' 3인", status:"고급캡스톤디자인 · 중간발표 완료, 진행 중", kind:"캡스톤 · 진행 중",
+  summary:"라벨 없는 임의의 영상을 분석해 진동·바람·온감·냉감·조명 효과를 자동 생성하고, 핸드 그립·바람 모듈·LED로 재생하는 다감각 햅틱 인터페이스입니다.",
+  tags:["Qwen3-VL","Qwen2.5-Omni","LightGBM","HMM","OpenCV","BLE/ESP32"], hot:["중간발표"],
+  facts:[["과목","고급캡스톤디자인 (2026-2학기) · 지도교수 김명호"],["팀","트민남 — 주호중(팀장), 이상준, 임세윤"],["내 역할","영상 분석: 지각 층 · 속도 최적화"],["기간","2026.9 ~ 2026.12"]],
+  blocks:[
+   {h:"왜 필요한가", p:["4DX·D-BOX 같은 상업용 4D 상영은 작품마다 사람이 2~3주씩 직접 효과를 코딩합니다. 그래서 4D는 일부 작품에만 제공됩니다. 이 프로젝트는 임의의 영상(mp4)을 영상 이해 모델로 분석해 4D 효과를 자동 생성하려는 시도입니다."]},
+   {h:"시스템 구조", fig:FIG_4D, cap:"영상 한 편을 Colab GPU에서 한 번 분석해 track.json을 만들고, 재생 PC는 이 파일만 읽어 BLE로 기기에 명령을 보냅니다. 빨간 점선 안의 지각 층이 제가 맡은 부분입니다."},
+   {h:"왜 3층인가", p:["영상과 햅틱 신호가 짝지어진 공개 데이터가 없어서, 영상에서 진동까지를 한 모델로 학습할 수 없습니다. 그래서 인식은 고정된 사전학습 모델과 신호처리에 맡기고, 그 결과를 합쳐 판단하는 결합 층만 소량의 사람 라벨로 학습합니다. 더 좋은 지각 모델이 나오면 결합 층만 다시 학습하면 됩니다.","범위는 오프라인 사전 분석, 제로샷(새 영상마다 라벨링 없음), Colab GPU 1장, 노트북·데스크탑 시청으로 잡았습니다."]},
+   {h:"내가 한 일 (영상 분석 · 속도 최적화)", ul:[
+     "라벨링 에디터 웹사이트로 효과 5종(순간진동·지속진동·바람·온열·냉각)을 팀원이 나눠 라벨링하는 정답 데이터셋 구축에 참여했습니다.",
+     "모델 단독 결과를 분석해 대화 장면에서 순간 진동이 오탐되는 문제(말소리 음량 변화를 충격음으로 오인)를 발견했습니다.",
+     "오탐 재학습을 위한 순간 진동 검수, 이후 바람·온도까지 검수 범위를 확장했습니다.",
+     "<b>Qwen3-VL 로짓 채점</b> 방식으로 속도를 최적화했습니다: 2분 영상 분석 6분 → 62초 (약 5.8배).",
+     "<b>EVS(토큰 프루닝)</b> 적용을 검토했습니다: 안 변하는 픽셀 패치를 미리 제거해 재학습 없이 첫 응답 지연 최대 4배 단축, AUROC 하락 0.02 이내일 때만 채택.",
+     "<b>Qwen2.5-Omni</b>(영상+소리 동시 입력) 테스트로 음악·대사 오탐을 완화했습니다: 라벨 기준 럼블 F1 0.47 → 0.68, 음악 구간 진동 274개 → 128개로 감소."]},
+   {h:"지각 층 기술 상세 (내 담당)", ul:[
+     "<b>장면 의미 · Qwen3-VL-4B</b>: SigLIP-2 비전 인코더 → 연결층 → LLM 구조입니다. 영상을 초당 4프레임(폭 640px)으로 캐시하고, 샷 경계를 넘지 않는 4초 이하 창마다 2~8장을 뽑아 사건 원인·열원·냉기·공기 이동 같은 객관식 관찰 질문 15개에 답하게 합니다.",
+     "<b>로짓 채점</b>: 모델에게 문장을 쓰게 하지 않고 선택지(A/B/C/D) 토큰의 확률만 읽습니다. 영상 부분은 한 번만 계산하고 질문 15개를 일괄 처리합니다. 순간적인 사건은 onset이 보완하고, 확률이 한쪽으로 쏠리는 문제는 따로 보정이 필요합니다.",
+     "<b>소리 타이밍 · onset 검출</b>: 10ms 간격, 40개 주파수 대역의 에너지 변화로 소리가 시작되는 시각을 ms 단위로 잡습니다.",
+     "<b>소리 종류 · PE-A-Frame</b>: 오디오·텍스트 트랜스포머로 40ms마다 12종 약 40개 문장과 비교해 점수를 냅니다. 소리 종류 판단을 넣자 예비 검증 예고편의 진동이 28개에서 14개로 줄었습니다.",
+     "<b>움직임 · Farneback 광학 흐름</b>: 픽셀 이동량으로 바람 세기와 화면 흔들림을 잽니다. 학습형 모션 인코더(InternVideo2 등)는 의미는 풍부하지만 T4 GPU에 부담이 커서 가벼운 고전 알고리즘을 골랐습니다.",
+     "<b>영상+소리 · Qwen2.5-Omni-3B</b>: 같은 4초 창의 영상과 소리를 함께 넣어 \"가장 큰 소리가 음악·대사인지, 화면 속 사건인지\" 같은 질문 7개의 확률을 읽습니다. 음악·대사 확률이 절반을 넘으면 소리 경로로 켜지는 진동을 끄고, 지속 효과에는 Qwen3-VL과 Omni 점수 중 높은 값을 씁니다. 영상·소리 임베딩 모델 PE-AV도 시험했지만 나아지지 않고 느려서 뺐습니다."]},
+   {h:"로짓 채점 파이프라인", chain:[["4fps 캐시","폭 640px로 한 번만 디코딩"],["샷 경계 검출","장면이 바뀌는 곳에서 창을 자름"],["4초 이하 창","창마다 2~8장 선택"],["Qwen3-VL-4B","SigLIP-2 → 연결층 → LLM"],["선택지 로짓만 읽기","A/B/C/D 확률, 질문 15개 일괄"],["시간축 확률","결합 층으로 전달"]], me:true,
+     bars:[{cap:"2분 영상 분석 시간 (T4, 예비 검증): 약 5.8배 단축", rows:[["문장 생성",360,"6분"],["로짓 채점",62,"62초"]], max:360, lw:"6.5em"}],
+     p2:["114분 영화 한 편을 T4에서 분석하는 데 119.9분(영상 길이의 약 1.05배)이 걸렸고, 그중 77%가 VLM 단계였습니다. 다음 단계로, 바뀌지 않는 픽셀 패치를 모델에 넣기 전에 걸러내는 EVS 토큰 프루닝을 검토하고 있습니다. 재학습 없이 첫 응답 지연을 최대 4배 줄일 수 있고, 질문별 AUROC 하락이 0.02 이내일 때만 채택합니다."]},
+   {h:"데이터 루프 (라벨링 → 검수 → 재학습)", chain:[["라벨링 에디터","효과 5종을 타임라인 레인에 구간으로 표시"],["Baseline 출력","가중합 규칙으로 track.json 생성"],["오탐 분석","대사 위주 구간 진동의 79%가 오탐"],["사람 검수","추가·삭제·늘리기·줄이기, 수정 이력 저장"],["재학습","GBDT + HMM (10~11주)"],["평가","포인트 브레이크(114분) 라벨로 1회"]],
+     p2:["검수가 데이터 쪽 대응이라면, Omni 추가는 모델 쪽 대응입니다. 둘을 나눠 각각 효과를 확인했습니다."]},
+   {h:"Omni 적용 결과", bars:[{cap:"라벨 기준 럼블 F1", rows:[["기존 규칙",0.47,"0.47"],["Omni 적용",0.68,"0.68"]], max:1, lw:"6.5em"},{cap:"음악이 큰 구간에서 켜진 진동 수", rows:[["기존 규칙",274,"274개"],["Omni 적용",128,"128개"]], max:274, lw:"6.5em"}],
+     p2:["어느 트랙인지 알리지 않은 블라인드 비교(20초 조각 19개, 평가자 1명)에서도 Omni 쪽이 12 대 6으로 더 많이 선택됐지만, 표본이 작아 유의하지 않아서(p ≈ 0.24) 예비 결과로만 봅니다. 4초 창 하나에 음악과 효과음이 섞이면 창 안의 후보가 모두 같은 판단을 받는 한계가 있어, 진동 후보마다 앞뒤 1초만 Omni에 넣는 방식을 시험하고 있습니다. Omni를 추가하면 4초 창마다 중앙값 1.9초가 더 걸립니다."]},
+   {h:"결합 층 · 구동 층 (팀 공동)", ul:[
+     "<b>이벤트 선택기</b>: LightGBM 그래디언트 부스팅 트리가 소리 점수와 화면 원인 확률을 onset 단위로 받아 순간 진동을 켤지 정합니다. 과적합을 막으려고 얕은 트리(깊이 3~4), 조기 종료, 합성 데이터 가중치 0.3을 씁니다. 진동 기준값은 배경음악 오탐 5% 이하에서 재현율이 가장 높은 값으로 정합니다.",
+     "<b>상태 추적기</b>: 0.5초 구간별 확률을 그대로 쓰면 효과가 깜빡이므로, HMM이 라벨 구간 길이에서 상태 유지 확률(예: 바람 평균 10초 → 켜짐 유지 0.95)을 배우고 비터비 알고리즘으로 구간을 매끄럽게 정합니다.",
+     "<b>구동 층</b>: 진동은 수십 ms, 펠티어는 수 초처럼 액추에이터마다 반응 속도가 달라 그만큼 명령을 앞당겨 보내고, 안전한 범위로 제한합니다. track.json에는 진동 이벤트(시각, ERM/LRA, 단발/연사, 세기), 지속 구간, 순간 돌풍, LED 색, 지연을 반영한 전송 시각이 담깁니다.",
+     "지금은 학습 모델 대신 소리·화면·영상 이해 점수를 가중합하는 Baseline과 Omni 음악·대사 필터로 동작하고, 검수한 라벨로 학습 모델을 만들어 대체할 예정입니다."]},
+   {h:"평가 계획", ul:[
+     "진동 재현율·정밀도·F1(±50/100/200 ms), onset 오차 중앙값·p90, 배경음악 오탐률",
+     "바람·온냉 구간 정밀도와 전환(깜빡임) 횟수",
+     "부품별 지표로 틀렸을 때 어느 부품의 문제인지 추적하고, 부품을 하나씩 빼는 제거 실험",
+     "가중합 Baseline·수작업 규칙·사람 상한선과 비교, 영상 단위 교차검증, 부트스트랩 95% 신뢰구간",
+     "기기 실측: 진동 onset p90 ≤ 50 ms. 소리와 진동의 어긋남을 알아채는 임계값이 약 88~179 ms로 보고돼 있어 허용 오차를 ±100 ms로 잡았습니다.",
+     "테스트셋은 모델 결과를 보지 않고 라벨링하고, 최종 구성으로 한 번만 평가합니다."]},
+   {h:"하드웨어 (팀 공동)", p:["핸드 그립(ERM+LRA 진동, 펠티어 온냉, XIAO ESP32-C3), 바람 모듈(80mm PWM 팬+서보, ESP32 DevKit), LED 모듈(SK6812 RGBW 스트립)으로 구성됩니다. 하드웨어는 제가 직접 담당한 부분은 아니며, 11월 초 기준 3D 프린팅·회로 설계가 진행 중입니다."]},
+   {h:"현재 단계", p:["2026.11 중간발표 기준, 가중합 Baseline 구현 완료, 순간진동 오탐 확인 및 검수 진행, Omni 기반 음악·대사 필터 테스트를 마쳤습니다. 10~12주차에 재학습·평가, 13~15주차에 하드웨어 연동을 계획하고 있습니다."]},
+   {h:"사진 · 영상", ph:["발표자료 슬라이드 또는 데모 영상 넣기","하드웨어 사진 넣기"]}
+  ],
+  todo:"[12월 최종 결과가 나오면 반영하세요. 지금은 11월 중간발표 기준으로 작성했습니다.]"
+},
+{
+  id:"squash", main:false, title:"스쿼시 자세 교정 및 경기 분석", sub:"영상만으로 선수 이동·타격·랠리 점수를 중계 화면처럼 보여주는 분석 앱과, 관절 각도 자세 비교 도구",
+  period:"2026.09 ~", team:"개인", status:"경기 분석 앱 구현 · 자세 교정은 도구까지, 미완성", kind:"개인 프로젝트",
+  summary:"Lumo에서 몸 기준 방향 안내를 만들며 알게 된 YOLO Pose를, 2년째 치고 있는 취미인 스쿼시에 적용했습니다. 영상을 올리면 선수 이동 거리, 타격 횟수, 랠리별 점수가 중계 화면처럼 입혀진 영상이 나오는 웹 앱을 만들었습니다.",
+  tags:["YOLO11n-pose","YOLO11n(공)","OpenCV","호모그래피","Gradio","Python"], hot:[],
+  facts:[["기간","2026.09 ~"],["팀","개인"],["모델","YOLO11n-pose(선수) · YOLO11n 파인튜닝(공)"],["규모","Python 약 1,900줄 · 웹 앱(Gradio)"],["상태","경기 분석 앱은 동작, 득점 자동 판정·샷 종류는 미구현 / 자세 교정은 도구까지, 자동 임팩트 탐지 미완성"],["레포","github.com/dlsy4501/squash_pose_coach"]],
+  blocks:[
+   {h:"계기", p:["Lumo에서 사용자 기준 시계 방향 안내를 구현하려고 논문을 찾다가 YOLO Pose 모델을 알게 됐습니다. 몸에 센서를 붙이지 않고도 영상만으로 동작을 포착할 수 있다는 점에 흥미를 느껴, 2년째 치면서도 정석 자세를 완벽히 익히지 못한 취미인 스쿼시에 적용해봤습니다."]},
+   {h:"경기 분석 파이프라인", fig:FIG_SQUASH, cap:"레포 코드를 읽고 그린 구조도입니다. 손목 스윙만으로 센 타격은 연습 스윙이 섞이므로, 공 궤적이 방향을 꺾은 지점을 손목과 대조해 보정합니다. 공 모델이 없으면 손목 스윙만으로 동작합니다."},
+   {h:"경기 분석 (구현됨)", ul:[
+     "<b>선수 추적</b>: YOLO11n-pose의 트래커로 선수를 따라가되, 화면에서 큰 사람 2명만 선수로 보고 슬롯(P1·P2)에 고정합니다. 트래커가 ID를 새로 주면 지금 안 보이는 선수 중 마지막 위치가 가장 가까운 슬롯에 이어붙여 ID 스위치를 줄였습니다. 코트 밖 관중은 코트 좌표로 걸러냅니다.",
+     "<b>이동 거리·속도</b>: 코트 바닥 선 위의 점 4~5개(앞벽 모서리, 숏라인, T자)를 클릭하면 호모그래피로 발밑 픽셀을 코트 좌표(m)로 바꿔 이동 거리와 속도를 계산합니다. 위치는 지수이동평균으로 부드럽게 하고, 한 프레임에 2m를 넘게 움직이면 ID 스위치나 오검출로 보고 무시합니다. 보정 없이도 돌아가지만 이동 거리와 코트맵은 빠집니다.",
+     "<b>타격 검출</b>: 손목이 빠르게 움직인 순간을 셉니다. 카메라 거리에 영향받지 않도록 손목 속도를 몸통 길이로 나눠 정규화하고, 3프레임 평균으로 키포인트 떨림을 줄인 뒤, 속도 피크가 기준 이상이고 직전 타격과 0.7초 이상 떨어져 있을 때만 타격으로 기록합니다.",
+     "<b>공 궤적으로 보정</b>: 공 탐지 결과에서 연속성이 맞는 후보만 고르고(한 프레임에 갈 수 있는 거리 제한), 앞뒤 점을 이은 직선에서 크게 벗어난 튀는 점을 지우고, 5프레임 이하 구멍은 보간합니다. 이 궤적에서 방향이 50° 이상 꺾이는 지점을 찾아 손목이 160px 안에 있는 선수의 타격으로 연결하고, 공이 앞뒤로 계속 보이는데 근처에서 방향이 안 꺾인 스윙은 연습 스윙으로 버립니다. 공이 안 보이던 구간의 스윙은 그대로 둡니다.",
+     "<b>랠리·점수</b>: 타격이 3초 넘게 끊기면 랠리가 끝난 것으로 나누고, 득점자는 우선 마지막 타격자로 추정합니다. 틴/아웃 판정은 공 궤적이 안정적으로 나와야 가능해서, 앱의 랠리 표에서 사람이 정정하면 분석을 다시 하지 않고 영상만 다시 만들어 줍니다. 랠리별 시작·끝·길이·타격 수·득점자는 CSV로도 저장됩니다.",
+     "<b>중계 화면 오버레이</b>: 선수 이름표와 현재 속도, 발밑 링, 타격 순간 배너, 점수판, 이동 거리 패널, 위에서 본 코트맵(이동 궤적 포함)을 영상에 얹고 원본 소리를 붙여 H.264로 내보냅니다. Pillow로 한글을 직접 그립니다.",
+     "<b>쓰기 쉽게</b>: 맥·윈도우에서 더블클릭만으로 설치부터 실행까지 되는 스크립트와, 코드를 몰라도 따라 할 수 있는 사용 설명서를 만들었습니다. 분석을 느린 단계(영상 훑기)와 빠른 단계(후처리·그리기)로 나눠서, 득점자를 고쳐도 몇 분 안에 다시 만들어집니다."]},
+   {h:"공 탐지 모델 학습 루프", chain:[["라벨링","공 위치를 직접 찍어 ball_dataset 구성"],["학습","YOLO11n 파인튜닝, imgsz 960, 공 있는/없는 프레임을 8:2로"],["가짜 라벨","1차 모델 확신 0.6 이상 + 궤적이 이어지는 것만 후보"],["O/X 검수","사람이 맞다·틀리다만 확인"],["재학습","검수한 것을 합쳐 다시 학습"]],
+     p2:["공은 1080p에서 15px 정도로 작아서 입력 해상도를 960으로 키우고 mosaic 증강은 약하게 썼습니다. 라벨링 노동을 줄이려고 1차 모델이 새 영상에서 후보를 뽑고 사람은 O/X만 확인하는 자기 학습 루프를 만들었습니다. 다만 공 모델의 정확도 수치는 아직 정리하지 못했습니다."]},
+   {h:"자세 교정 (도구까지 구현, 미완성)", chain:[["샘플 목록","영상, 임팩트 프레임 번호, 샷 종류를 한 줄씩"],["관절 각도","YOLO pose로 팔꿈치·무릎·어깨 5개 각도"],["방향 근사","어깨 너비 ÷ 몸통 길이"],["레퍼런스 저장","원본 값을 그대로 reference.json에"],["비교","샷 종류 → 방향 ±0.15 순으로 걸러 평균·표준편차"],["피드백","15° 또는 2σ 넘게 벗어난 관절 안내"]],
+     p2:["RGB 카메라라 깊이가 없으므로 어깨 너비와 몸통 길이의 비율로 카메라를 얼마나 정면으로 보는지 근사하고, 비슷한 방향의 레퍼런스만 비교합니다. 평균과 표준편차는 미리 내지 않고 비교하는 시점에 걸러낸 샘플로 계산합니다. 걸러낸 샘플이 너무 적으면(방향 2개 미만) 전체로 되돌립니다. 샘플이 1~2개면 표준편차가 0에 가까워 조금만 벗어나도 교정이 필요하다고 뜨는 한계도 코드와 설명서에 적어 뒀습니다. 구현은 명령줄 도구까지이고 웹 앱에는 아직 합치지 못했습니다."]},
+   {h:"자체 점검", p:["핵심 모듈(타격 검출, 공 궤적 정리, 랠리 분할, 호모그래피, 가짜 라벨 선별)마다 합성 데이터로 돌리는 자체 점검 코드를 넣어, 임계값을 바꿔도 동작이 깨지지 않는지 바로 확인할 수 있습니다. 임계값 대부분은 경험치라 실제 공 모델 결과로 다시 맞춰야 한다는 점도 코드에 적어 뒀습니다."]},
+   {h:"한계", ul:[
+     "득점자는 마지막 타격자로 추정한 값이라 틀릴 수 있고, 틴·아웃 같은 실수 판정은 못 합니다. 사람이 정정해야 합니다.",
+     "샷 종류(포핸드·백핸드 등)와 공격 패턴 분석은 아직 없습니다.",
+     "카메라가 고정된 영상에서만 코트 보정이 맞고, GPU 없이는 1분 영상에 7~10분쯤 걸립니다.",
+     "자세 교정은 임팩트 프레임 자동 탐지, 시간 정렬(DTW), 정확한 3D 자세, 체형 보정이 없습니다."]},
+   {h:"사진 · 영상", ph:["분석 결과 영상(오버레이) 캡처 또는 데모 영상 넣기","코트 보정 화면 캡처 넣기"]}
+  ],
+  todo:"[레포(squash_pose_coach)를 읽고 채웠습니다. 공 모델 정확도 수치와 이동 거리 검증 결과(실측과 비교)가 있으면 넣으면 좋습니다. 샷 종류·공격 패턴 분석은 아직 코드에 없어서 '구현됨'에서 뺐습니다.]"
+},
+{
+  id:"mercantis", main:false, title:"메르칸티스", sub:"직접 설계한 보드게임을 실시간 멀티플레이 웹으로 구현",
+  period:"2026.09 ~", team:"개인", status:"배포 · 실제 플레이테스트 완료, 다른 일정으로 잠시 중단", kind:"개인 프로젝트",
+  summary:"친구들과 보드게임을 하다가 \"이런 게임도 있으면 재밌겠다\"는 생각에서 직접 설계하고 혼자 구현한 게임입니다. 직접, 그리고 주변 사람들과 실제로 플레이해봤습니다.",
+  tags:["Node.js","Express","Socket.io","게임 설계"], hot:["배포됨"],
+  facts:[["기간","2026.09 ~"],["팀","개인"],["스택","Node.js · Express · Socket.io"],["배포","mercantis.onrender.com"],["상태","미완성이지만 배포·플레이테스트 완료, 다른 일정 때문에 잠시 중단"]],
+  blocks:[
+   {h:"어떤 게임인가", p:["원형으로 둘러앉은 교역 상단이 서로에게 부채를 전가하는 카드게임 \"체인게임\"과, 그 성적으로 얻은 코인으로 상관을 사들이는 경매를 한 루프로 엮은 게임입니다. 목표 코인에 먼저 도달하는 상단이 이깁니다. 규칙 설명서도 직접 써서 버전을 올려 가고 있습니다(현재 v4)."]},
+   {h:"게임 루프", flow:[["체인게임","한 라운드. 모두 동시에 카드를 내고 면책, 밀약, 부채 전가, 파산 순서로 처리합니다."],["코인 지급","등수 코인과 보유 상관의 소득을 지급하고 목표 코인 도달을 확인합니다."],["상관 경매","코인으로 상관을 입찰합니다. 상관은 정해진 라운드가 지나면 사라집니다."]]},
+   {h:"기술적으로 푼 문제", ul:[
+     "<b>실시간 멀티플레이</b>: Socket.io로 방 생성·참가·로비·턴 진행을 서버가 관리합니다. 회원가입 없이 이름과 4자리 방 코드만 씁니다.",
+     "<b>규칙과 서버 분리</b>: 덱, 파산 판정, 경매, 승리 조건을 <code>game-logic.js</code> 한 곳에 모아 서버와 분리했고, 목표 코인과 코인 표 같은 값은 상수로 빼서 밸런스를 조정합니다.",
+     "<b>무응답 처리</b>: 한 턴과 한 경매마다 15초 타이머를 두고, 반응이 없으면 서버가 기본 행동으로 대신 처리합니다.",
+     "<b>봇</b>: 사람이 모자라면 봇을 최대 6개 상단까지 채울 수 있습니다.",
+     "<b>자동 검증</b>: 실제 Socket.io 클라이언트 4개를 띄워 방 생성부터 목표 코인 달성까지 자동으로 플레이하고, 모든 클라이언트의 최종 상태(승자·코인)가 서버와 같은지 확인하는 통합 테스트를 만들었습니다."]},
+   {h:"플레이", p:["<a href=\"https://mercantis.onrender.com/\" target=\"_blank\" rel=\"noopener\">mercantis.onrender.com</a>에 배포돼 있습니다. 혼자 테스트한 것에 그치지 않고 실제로 직접 플레이했고, 주변 사람들도 함께 플레이해줬습니다."]},
+   {h:"화면 · 플레이 영상", ph:["게임 화면 캡처 넣기 (로비, 체인게임, 경매)","플레이 영상 또는 GIF 넣기"]}
+  ],
+  todo:"[플레이테스트 인원 수와 구체적인 피드백 내용을 더 채우면 좋습니다.]"
+},
+{
+  id:"sideimpact", main:false, title:"시각장애인 커뮤니티 공모전", sub:"2025년도 사이드임팩트 공모전 — 접근성에 관심을 갖게 된 첫 프로젝트",
+  period:"2025", team:"팀", status:"완료", kind:"공모전",
+  summary:"시각장애인들이 지역별 접근성 정보를 나눌 수 있는 커뮤니티를 기획·개발했습니다.",
+  tags:["Node.js","React","TTS","STT"], hot:[],
+  facts:[["공모전","2025년도 사이드임팩트 공모전"],["팀","팀 [인원 확인]"],["내 역할","[확인 필요]"],["의미","접근성 관심의 시작, Git을 실제 협업 도구로 처음 쓴 프로젝트"]],
+  blocks:[
+   {h:"시작 계기", p:["지인이 같이 해보자고 제안해서 시작했습니다. 처음으로 \"장애인의 입장에서\" 일상을 다시 보게 된 프로젝트입니다."]},
+   {h:"문제의식", p:["비장애인은 SNS·커뮤니티로 놀거리·맛집 같은 정보를 얻고 관심사를 공유하지만, 시각장애인에게 필요한 정보의 축은 다릅니다. 예를 들어 \"이 지역이 시각장애인이 이용하기에 불편함이 없는 공간인가\"처럼, 접근성이 관심사 그 자체가 됩니다. 이런 정보를 나눌 수 있는 시각장애인 커뮤니티가 없다는 데서 출발했습니다."]},
+   {h:"만든 것", ul:[
+     "시각장애인들이 지역별 접근성 정보를 서로 나눌 수 있는 음성 기반 SNS 커뮤니티를 만들었습니다.",
+     "Node.js와 React로 TTS(Text-to-Speech)·STT(Speech-to-Text) 기능을 구현했습니다.",
+     "사용자의 현재 위치 기반 게시글 조회 기능을 백엔드 개발자와 협업해 실제 배포까지 완료했습니다."]},
+   {h:"의미", p:["크게 개선하거나 뚜렷한 수상 성과를 내지는 못했지만, 장애인 접근성에 관심을 갖게 된 최초 지점이고(이후 Lumo·디딤으로 이어짐), 협업과 Git을 \"기록 보관용\"이 아니라 실제 버전 관리 도구로 처음 써본 프로젝트입니다."]}
+  ],
+  todo:"[정확한 시기, 팀 인원, 내가 맡은 구체적 역할(기획/개발/디자인 등)을 채우세요.]"
+},
+{
+  id:"yolov1", main:false, title:"YOLOv1-ResNet101 직접 구현과 개선", sub:"작은 물체와 조명 변화에 약한 점을 단계별로 고친 실험",
+  period:"2025.09 ~ 12", team:"개인", status:"완료 · 대회 결과 제출", kind:"수업 중 진행한 프로젝트",
+  summary:"YOLOv1을 PyTorch로 구현하고 14×14 그리드, HSV 증강, 손실 가중치 조정, 인코딩 버그 수정으로 성능을 올렸습니다.",
+  tags:["PyTorch","ResNet101","VOC2012"], hot:[],
+  facts:[["기간","2025.09 ~ 12"],["팀","개인"],["데이터","VOC2012"],["버전","v1 ~ v5 실험 폴더"]],
+  blocks:[
+   {h:"한 일", ul:[
+     "백본을 <b>ResNet101</b>로 바꿔 YOLOv1 구조를 직접 구현했습니다.",
+     "7×7 그리드를 <b>14×14</b>로 늘려 작은 물체를 더 세밀하게 봅니다(448 입력에서 32px 단위).",
+     "밝기·색 변화에 강하도록 <b>HSV 색 공간 증강</b>을 넣었습니다.",
+     "손실 가중치를 조정했습니다(λ_coord 5.0, λ_noobj 0.5).",
+     "클래스 확률과 박스 신뢰도의 <b>인덱스가 겹치는 인코딩 버그</b>를 찾아 고쳐 학습 정확도를 높였습니다."]},
+   {h:"결과", ph:["버전별 mAP 비교표 넣기","탐지 예시 이미지 넣기"]}
+  ],
+  todo:"[버전별 mAP, 대회 순위, 학습 설정(에폭, 배치)을 채우세요. 레포에 대회 제출 파일은 있지만 점수는 확인하지 못했습니다.]"
+},
+{
+  id:"classify", main:false, title:"이미지 분류 대회", sub:"EfficientNet-B6 전이학습, 100클래스",
+  period:"2025.06", team:"팀 (나반 1조)", status:"결과 제출 완료", kind:"수업 중 진행한 프로젝트",
+  summary:"EfficientNet-B6에 분류기 헤드를 새로 얹고 320px 입력으로 100클래스 분류 결과를 제출했습니다.",
+  tags:["PyTorch","EfficientNet-B6"], hot:[],
+  facts:[["기간","2025.06"],["팀","나반 1조"],["입력","320px"],["클래스","100"]],
+  blocks:[{h:"한 일", ul:["ImageNet 사전학습 EfficientNet-B6에 Dropout·BatchNorm이 들어간 커스텀 분류기 헤드를 설계했습니다.","모델을 여러 버전으로 바꿔 가며 실험하고 예측 결과를 제출했습니다."]}],
+  todo:"[대회 순위·정확도, 본인 기여 부분을 채우세요.]"
+},
+{
+  id:"aed", main:false, title:"서울 AED 접근성 분석", sub:"심정지 데이터와 AED 위치로 본 사각지대",
+  period:"2025.05 ~ 06", team:"5인 팀", status:"완료", kind:"수업 중 진행한 프로젝트",
+  summary:"서울의 AED 위치와 응급 출동 데이터를 지도에 올려 분석하고, Tmap으로 AED까지 경로를 탐색했습니다.",
+  tags:["pandas","geopandas","Tmap API"], hot:[],
+  facts:[["기간","2025.05 ~ 06"],["팀","5인"],["내 기여","데이터 수집, Tmap 경로 스크립트"],["도구","Python"]],
+  blocks:[{h:"한 일", ul:["공공 데이터(AED, 심정지 통계)를 모았습니다.","Tmap API로 AED까지 경로를 찾는 스크립트를 작성했습니다."]}],
+  todo:"[분석에서 나온 결론, 본인 기여 범위를 더 구체적으로 채우세요.]"
+},
+{
+  id:"coldcache", main:false, title:"Coldcache 편의점 웹", sub:"상품·장바구니·결제·행사 상품을 다루는 웹과 DB",
+  period:"2024.09 ~ 12", team:"3인 (FE·BE·DBA)", status:"동작하는 데모", kind:"수업 중 진행한 프로젝트",
+  summary:"Flask와 MySQL로 만든 편의점 웹. 프런트엔드를 담당했습니다.",
+  tags:["Flask","MySQL","HTML/CSS/JS"], hot:[],
+  facts:[["기간","2024.09 ~ 12"],["팀","3인"],["내 역할","웹 프런트엔드"],["스택","Flask · MySQL"]],
+  blocks:[{h:"한 일", ul:["로그인, 회원가입, 상품 목록·상세, 장바구니, 행사 상품 저장 화면을 만들었습니다.","7개 테이블(cart, category, customer, event_product, payment, product, save_event_product)의 DB와 연결되는 화면입니다."]}],
+  todo:"[메인 화면 캡처 넣기]"
+},
+{
+  id:"bungbang", main:false, title:"붕빵", sub:"Android 모바일 프로그래밍 팀 프로젝트",
+  period:"2025.11", team:"팀", status:"완료", kind:"수업 중 진행한 프로젝트",
+  summary:"노점 위치를 보여 주고 사용자 제보와 데이터 분석 기능이 들어간 Android 앱.",
+  tags:["Android","Java","Gradle"], hot:[],
+  facts:[["기간","2025.11"],["팀","팀"],["스택","Android · Java"],["주요 기능","사용자 제보, 데이터 분석"]],
+  blocks:[{h:"한 일", ul:["사용자 제보 기능과 데이터 분석 기능을 구현하고 UI를 개선했습니다."]}],
+  todo:"[앱 한 줄 설명, 본인 담당 범위, 화면 캡처를 채우세요.]"
+}
+];
+
+
+var app = document.getElementById("app");
+var CLEAN = false;
+CLEAN = true;
+try{ var _c = localStorage.getItem("pf-clean"); if(_c!==null) CLEAN = _c==="1"; }catch(e){}
+function setClean(v){ CLEAN=v; document.body.classList.toggle("clean",v); try{localStorage.setItem("pf-clean",v?"1":"0")}catch(e){} var b=document.getElementById("cleanbtn"); if(b) b.textContent = v?"작성 메모 보이기":"작성 메모 숨기기"; }
+
+function head(){
+  return '<div class="in"><header class="top"><a class="brand" href="#home">'+PROFILE.name+'</a><nav class="nav"><a href="#home">프로젝트</a><a href="'+PROFILE.github+'" target="_blank" rel="noopener">GitHub</a></nav></header></div>';
+}
+function foot(){
+  return '<div class="band"><div class="in"><footer class="end"><span>'+PROFILE.name+' · '+PROFILE.role+'</span><span><button class="link" id="cleanbtn" type="button">'+(CLEAN?"작성 메모 보이기":"작성 메모 숨기기")+'</button> · <a href="'+PROFILE.github+'" target="_blank" rel="noopener">github.com/dlsy4501</a></span></footer></div></div>';
+}
+function home(){
+  var mains = PROJECTS.filter(function(p){return p.main});
+  var rest = PROJECTS.filter(function(p){return !p.main});
+  var h = head();
+  h += '<div class="in hero"><h1>'+PROFILE.headline+'</h1><p class="lead">'+PROFILE.lead+'</p>';
+  h += '<dl class="rows">'+PROFILE.awards.map(function(a){return '<div class="row"><dt>'+a[2]+'</dt><dd><b>'+a[0]+'</b><span>'+a[1]+'</span></dd></div>'}).join("")+'</dl></div>';
+  h += '<section class="in pad" style="padding-top:24px">';
+  h += mains.map(function(p,i){
+    var cls = (i%2===0) ? 'work w1' : 'work w2';
+    if(i%2===0){
+      return '<a class="'+cls+'" href="#'+p.id+'"><div class="media">'+p.kind+'</div><div class="txt"><div><h2>'+p.title+'</h2><p class="muted">'+p.summary+'</p></div><div class="stack"><span><b>역할</b> '+p.facts[2][1]+'</span><span><b>기술</b> '+p.tags.join(", ")+'</span><span><b>기간</b> '+p.period+' · '+p.team+'</span></div></div></a>';
+    }
+    return '<a class="'+cls+'" href="#'+p.id+'"><div><h2>'+p.title+'</h2><p class="muted">'+p.summary+'</p><p class="small muted" style="margin-top:12px">'+p.period+' · '+p.status+'</p></div><div class="media">'+p.kind+'</div></a>';
+  }).join("");
+  h += '</section>';
+  h += '<div class="band"><section class="in pad"><div class="sechead"><h2>그 밖의 프로젝트</h2></div><div class="list">'+rest.map(function(p){
+    return '<a href="#'+p.id+'"><h3>'+p.title+'</h3><p class="muted">'+p.sub+'</p><span class="yr">'+p.period+'</span></a>';
+  }).join("")+'</div></section></div>';
+  h += '<section class="in pad skills"><div class="sechead"><h2>기술</h2></div><dl class="rows" style="margin-top:0">'+PROFILE.skills.map(function(s){return '<div class="row"><dt>'+s[0]+'</dt><dd>'+s[1]+'</dd></div>'}).join("")+'</dl></section>';
+  return h + foot();
+}
+function paras(a){ return a.map(function(t){return '<p>'+t+'</p>'}).join(""); }
+function barsHtml(g){
+  var cols = (g.lw||"5em")+' minmax(0,1fr) 5.5em';
+  return '<div class="bargroup"><div class="bars">'+g.rows.map(function(r){return '<div class="bar" style="grid-template-columns:'+cols+'"><span>'+r[0]+'</span><i style="width:'+Math.max(0.5,r[1]/g.max*100)+'%"></i><span>'+r[2]+'</span></div>'}).join("")+'</div><p class="small muted">'+g.cap+'</p></div>';
+}
+function block(b){
+  var c = '';
+  var cls = 'body';
+  var wide = !!(b.fig || b.chain);
+  if(b.flow){ cls='body cols'; c += b.flow.map(function(s){return '<div><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div>'}).join(""); }
+  if(b.fig){ c += '<div class="fig">'+b.fig+'</div><p class="fighint">옆으로 밀어서 전체를 볼 수 있습니다.</p>'+(b.cap?'<p class="small muted">'+b.cap+'</p>':''); }
+  if(b.chain){ c += '<div class="chain">'+b.chain.map(function(s){return '<div class="st'+(b.me?' me':'')+'"><b>'+s[0]+'</b><span>'+s[1]+'</span></div>'}).join('<span class="ar" aria-hidden="true"></span>')+'</div>'; }
+  if(b.p) c += paras(b.p);
+  if(b.ul) c += '<ul>'+b.ul.map(function(t){return '<li>'+t+'</li>'}).join("")+'</ul>';
+  if(b.big){ cls='body res'; c += '<ul>'+b.big.map(function(s){return '<li><b>'+s[0]+'</b> <span class="muted">'+s[1]+'</span></li>'}).join("")+'</ul>'; }
+  if(b.table){
+    c += '<div class="tw"><table><thead><tr>'+b.table.head.map(function(x){return '<th>'+x+'</th>'}).join("")+'</tr></thead><tbody>'+
+      b.table.rows.map(function(r){return '<tr>'+r.map(function(x){return '<td>'+x+'</td>'}).join("")+'</tr>'}).join("")+'</tbody></table></div><p class="small muted">'+b.table.cap+'</p>';
+  }
+  if(b.bars){ c += [].concat(b.bars).map(barsHtml).join(""); }
+  if(b.stack){
+    var t=b.stack.total;
+    c += '<div class="stk" role="img" aria-label="'+esc(b.stack.cap)+'">'+b.stack.segs.map(function(s){var w=s[1]/t*100; return '<i class="'+s[2]+'" style="width:'+w+'%" title="'+esc(s[0])+' '+s[1]+'s">'+(w>12?s[1].toFixed(2)+'s':'')+'</i>'}).join("")+'</div>';
+    c += '<div class="lg">'+b.stack.segs.map(function(s){return '<span><em class="'+s[2]+'"></em>'+s[0]+' <b>'+s[1].toFixed(3)+'s</b></span>'}).join("")+'</div><p class="small muted">'+b.stack.cap+'</p>';
+  }
+  if(b.p2) c += paras(b.p2);
+  if(b.ph){ cls='body pair'; c += b.ph.map(function(t){return '<div class="media">'+t+'</div>'}).join(""); }
+  return '<div class="sec'+(wide?' wide':'')+'"><h2>'+b.h+'</h2><div class="'+cls+'">'+c+'</div></div>';
+}
+function detail(p){
+  var h = head();
+  h += '<div class="in"><a class="back" href="#home">프로젝트 목록</a><div class="dhead"><h1>'+p.title+'</h1><p class="lead">'+p.sub+'</p>';
+  h += '<dl class="rows" style="margin-top:40px">'+p.facts.map(function(f){return '<div class="row"><dt>'+f[0]+'</dt><dd>'+f[1]+'</dd></div>'}).join("")+'</dl></div>';
+  h += p.blocks.map(block).join("");
+  if(p.todo) h += '<div class="memo" style="margin-top:40px"><b>작성 메모</b> '+p.todo+'</div>';
+  var i = PROJECTS.indexOf(p), nx = PROJECTS[(i+1)%PROJECTS.length];
+  h += '<a class="next" href="#'+nx.id+'"><small>다음 프로젝트</small><h2>'+nx.title+'</h2></a><div style="height:64px"></div></div>';
+  return h + foot();
+}
+function route(){
+  var id = (location.hash||"").replace("#","");
+  var p = PROJECTS.filter(function(x){return x.id===id})[0];
+  app.innerHTML = p ? detail(p) : home();
+  document.title = p ? p.title+" · "+PROFILE.name : PROFILE.name+" 포트폴리오";
+  document.body.classList.toggle("clean",CLEAN);
+  var b=document.getElementById("cleanbtn"); if(b) b.onclick=function(){setClean(!CLEAN)};
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange", route);
+route();
+</script>
+
+</body></html>
