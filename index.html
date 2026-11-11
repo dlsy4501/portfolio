@@ -51,12 +51,15 @@ section.pad{padding-block:80px}
 .sechead{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:40px}
 .muted{color:var(--muted)}
 .small{font-size:15px}
-.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px 20px}
 .shots figure{margin:0}
-.shots img{width:100%;height:auto;border-radius:6px;display:block;background:var(--sub)}
+.shots img{width:100%;aspect-ratio:4/3;object-fit:contain;border-radius:6px;display:block;background:var(--sub)}
 .shots figcaption{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.5}
 .media{background:var(--sub);border-radius:6px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--muted);font-size:15px;width:100%}
 .band .media{background:var(--bg)}
+.cover{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block;background:var(--sub)}
+.cover.contain{object-fit:contain}
+body.clean a.work.nocover.w2{grid-template-columns:minmax(0,1fr)}
 a.work{display:block;text-decoration:none;color:inherit}
 a.work:hover h3,a.work:hover h2{color:var(--accent)}
 /* 대표 1: 큰 미디어 위, 아래 2단 글 */
@@ -65,7 +68,11 @@ a.work:hover h3,a.work:hover h2{color:var(--accent)}
 .stack{display:grid;gap:4px;font-size:15px;color:var(--muted)}
 .stack b{color:var(--fg);font-weight:500}
 /* 대표 2: 좌우 분할 */
-a.work.w2{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:24px 56px;align-items:center;margin-top:96px}
+a.work.w2{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:24px 48px;align-items:center;padding-block:48px;border-top:1px solid var(--line)}
+a.work.w2.rev{grid-template-columns:minmax(0,2fr) minmax(0,3fr)}
+a.work.w2.rev .cover,a.work.w2.rev .media{order:2}
+a.work.w2:first-child{border-top:0;padding-top:8px}
+.w2 .stack{margin-top:20px}
 .w2 h2{margin-bottom:12px}
 /* 그 밖의 프로젝트: 목록 행 */
 .list a{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr) 8.5em;gap:4px 28px;align-items:baseline;padding-block:18px;border-top:1px solid var(--line);text-decoration:none}
@@ -115,7 +122,8 @@ body.clean .memo,body.clean .media{display:none}
   body{font-size:16px}
   .hero{padding-block:48px 40px}
   .w1 .txt,.w2{grid-template-columns:minmax(0,1fr)}
-  .w2{margin-top:64px}
+  a.work.w2,a.work.w2.rev{grid-template-columns:minmax(0,1fr);padding-block:36px}
+  a.work.w2.rev .cover,a.work.w2.rev .media{order:0}
   .list a{grid-template-columns:minmax(0,1fr)}
   .sec{grid-template-columns:minmax(0,1fr);padding-block:32px}
   .cols{grid-template-columns:minmax(0,1fr)}
@@ -327,7 +335,7 @@ var FIG_DIDIM = (function(){
 
 var PROJECTS = [
 {
-  id:"lumo", main:true, title:"Lumo", sub:"빛으로 물체를 가리키는 저시력자용 탐색 시스템",
+  id:"lumo", main:true, cover:"media/lumo/pot-dist-c.jpg", title:"Lumo", sub:"빛으로 물체를 가리키는 저시력자용 탐색 시스템",
   period:"2026", team:"3인 팀 '보여요'", status:"캡스톤 · 논문 투고(심사 중)", kind:"캡스톤 · 완료",
   summary:"음성으로 물건 이름을 말하면 그 물건 위에 직접 빛을 투사하고, 몸 기준 시계 방향과 거리를 음성으로 안내합니다.",
   tags:["YOLOE","YOLOv8n-pose","Whisper","RealSense D455","OpenCV"], hot:["금상","장려상","논문"],
@@ -416,7 +424,7 @@ var PROJECTS = [
   todo:"[레포가 비공개라 아직 코드로 확인 못했습니다. 앱스토어 개발자 계정은 팀원(Sangjun Lee=이상준으로 추정) 명의로 등록돼 있습니다. 1월 발표가 끝나면 최종 결과로 업데이트하세요.]"
 },
 {
-  id:"haptic4d", main:true, title:"개인형 4D 기기 제작", sub:"영상 이해 기반 4D 효과 자동 생성 및 다감각 햅틱 인터페이스",
+  id:"haptic4d", main:true, cover:"media/haptic4d/housing-render.jpg", coverFit:1, title:"개인형 4D 기기 제작", sub:"영상 이해 기반 4D 효과 자동 생성 및 다감각 햅틱 인터페이스",
   period:"2026.9 ~ 2026.12", team:"팀 '트민남' 3인", status:"고급캡스톤디자인 · 중간발표 완료, 진행 중", kind:"캡스톤 · 진행 중",
   summary:"라벨 없는 임의의 영상을 분석해 진동·바람·온감·냉감·조명 효과를 자동 생성하고, 핸드 그립·바람 모듈·LED로 재생하는 다감각 햅틱 인터페이스입니다.",
   tags:["Qwen3-VL","Qwen2.5-Omni","LightGBM","HMM","OpenCV","BLE/ESP32"], hot:["중간발표"],
@@ -466,7 +474,7 @@ var PROJECTS = [
   todo:"[12월 최종 결과가 나오면 반영하세요. 지금은 11월 중간발표 기준으로 작성했습니다.]"
 },
 {
-  id:"squash", main:false, title:"스쿼시 자세 교정 및 경기 분석", sub:"영상만으로 선수 이동·타격·랠리 점수를 중계 화면처럼 보여주는 분석 앱과, 관절 각도 자세 비교 도구",
+  id:"squash", main:true, cover:"media/squash/frame_01.jpg", title:"스쿼시 자세 교정 및 경기 분석", sub:"영상만으로 선수 이동·타격·랠리 점수를 중계 화면처럼 보여주는 분석 앱과, 관절 각도 자세 비교 도구",
   period:"2026.09 ~", team:"개인", status:"경기 분석 앱 구현 · 자세 교정은 도구까지, 미완성", kind:"개인 프로젝트",
   summary:"Lumo에서 몸 기준 방향 안내를 만들며 알게 된 YOLO Pose를, 2년째 치고 있는 취미인 스쿼시에 적용했습니다. 영상을 올리면 선수 이동 거리, 타격 횟수, 랠리별 점수가 중계 화면처럼 입혀진 영상이 나오는 웹 앱을 만들었습니다.",
   tags:["YOLO11n-pose","YOLO11n(공)","OpenCV","호모그래피","Gradio","Python"], hot:[],
@@ -610,11 +618,9 @@ function home(){
   h += '<dl class="rows">'+PROFILE.awards.map(function(a){return '<div class="row"><dt>'+a[2]+'</dt><dd><b>'+a[0]+'</b><span>'+a[1]+'</span></dd></div>'}).join("")+'</dl></div>';
   h += '<section class="in pad" style="padding-top:24px">';
   h += mains.map(function(p,i){
-    var cls = (i%2===0) ? 'work w1' : 'work w2';
-    if(i%2===0){
-      return '<a class="'+cls+'" href="#'+p.id+'"><div class="media">'+p.kind+'</div><div class="txt"><div><h2>'+p.title+'</h2><p class="muted">'+p.summary+'</p></div><div class="stack"><span><b>역할</b> '+p.facts[2][1]+'</span><span><b>기술</b> '+p.tags.join(", ")+'</span><span><b>기간</b> '+p.period+' · '+p.team+'</span></div></div></a>';
-    }
-    return '<a class="'+cls+'" href="#'+p.id+'"><div><h2>'+p.title+'</h2><p class="muted">'+p.summary+'</p><p class="small muted" style="margin-top:12px">'+p.period+' · '+p.status+'</p></div><div class="media">'+p.kind+'</div></a>';
+    var cls = 'work w2' + (i%2 ? ' rev' : '') + (p.cover ? '' : ' nocover');
+    var mm = p.cover ? '<img class="cover'+(p.coverFit?' contain':'')+'" loading="lazy" src="'+p.cover+'" alt="'+esc(p.title)+' 대표 이미지">' : '<div class="media">'+p.kind+'</div>';
+    return '<a class="'+cls+'" href="#'+p.id+'">'+mm+'<div class="txt"><h2>'+p.title+'</h2><p class="muted">'+p.summary+'</p><div class="stack"><span><b>역할</b> '+p.facts[2][1]+'</span><span><b>기술</b> '+p.tags.join(", ")+'</span><span><b>기간</b> '+p.period+' · '+p.team+'</span></div></div></a>';
   }).join("");
   h += '</section>';
   h += '<div class="band"><section class="in pad"><div class="sechead"><h2>그 밖의 프로젝트</h2></div><div class="list">'+rest.map(function(p){
@@ -631,7 +637,7 @@ function barsHtml(g){
 function block(b){
   var c = '';
   var cls = 'body';
-  var wide = !!(b.fig || b.chain);
+  var wide = !!(b.fig || b.chain || b.imgs);
   if(b.flow){ cls='body cols'; c += b.flow.map(function(s){return '<div><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div>'}).join(""); }
   if(b.fig){ c += '<div class="fig">'+b.fig+'</div><p class="fighint">옆으로 밀어서 전체를 볼 수 있습니다.</p>'+(b.cap?'<p class="small muted">'+b.cap+'</p>':''); }
   if(b.chain){ c += '<div class="chain">'+b.chain.map(function(s){return '<div class="st'+(b.me?' me':'')+'"><b>'+s[0]+'</b><span>'+s[1]+'</span></div>'}).join('<span class="ar" aria-hidden="true"></span>')+'</div>'; }
@@ -657,7 +663,7 @@ function detail(p){
   var h = head();
   h += '<div class="in"><a class="back" href="#home">프로젝트 목록</a><div class="dhead"><h1>'+p.title+'</h1><p class="lead">'+p.sub+'</p>';
   h += '<dl class="rows" style="margin-top:40px">'+p.facts.map(function(f){return '<div class="row"><dt>'+f[0]+'</dt><dd>'+f[1]+'</dd></div>'}).join("")+'</dl></div>';
-  h += p.blocks.map(block).join("");
+  h += p.blocks.filter(function(b){return b.imgs}).concat(p.blocks.filter(function(b){return !b.imgs})).map(block).join("");
   if(p.todo) h += '<div class="memo" style="margin-top:40px"><b>작성 메모</b> '+p.todo+'</div>';
   var i = PROJECTS.indexOf(p), nx = PROJECTS[(i+1)%PROJECTS.length];
   h += '<a class="next" href="#'+nx.id+'"><small>다음 프로젝트</small><h2>'+nx.title+'</h2></a><div style="height:64px"></div></div>';
