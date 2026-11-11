@@ -51,6 +51,10 @@ section.pad{padding-block:80px}
 .sechead{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:40px}
 .muted{color:var(--muted)}
 .small{font-size:15px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.shots figure{margin:0}
+.shots img{width:100%;height:auto;border-radius:6px;display:block;background:var(--sub)}
+.shots figcaption{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.5}
 .media{background:var(--sub);border-radius:6px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--muted);font-size:15px;width:100%}
 .band .media{background:var(--bg)}
 a.work{display:block;text-decoration:none;color:inherit}
@@ -373,7 +377,8 @@ var PROJECTS = [
      p2:["두 추론 단계가 98%를 차지했고, 가장 큰 항목은 비전이 아니라 음성 인식이었습니다. 기록이 남은 4회를 보면 STT는 같은 기기에서 3.05~3.16초로 거의 일정했지만 M2 Air에서는 7.0초로 두 배가 넘었습니다(기기에 좌우). 반면 검출은 0.78~2.28초로 같은 기기 안에서도 크게 달랐습니다(장면에 좌우). 그래서 지연을 평균 하나로 말하지 않고 회차별로 보고했습니다."]},
    {h:"이후 갈래", p:["Lumo는 두 방향으로 다음 프로젝트를 낳았습니다. 카메라가 고정 설치돼야 하는 공간 제약은 스마트폰 앱 '디딤'으로, 사용자 기준 방향 안내를 구현하며 알게 된 YOLO Pose 모델은 스쿼시 자세 교정 프로젝트로 이어졌습니다."]},
    {h:"논문", p:["\"Pointing with Light: Projected Guidance for Object Search by People with Low Vision\" (CCS: Accessibility technologies / Interaction devices). 더블 블라인드 리뷰로 저자명은 비공개 상태로 투고돼 있습니다. PDF는 프로젝트 파일에 있습니다."]},
-   {h:"사진 · 영상", ph:["시연 영상 또는 GIF 넣기 (주전자에 빛이 투사되는 장면) — 구글 드라이브 '캡스톤디자인' 공유 폴더에 있음, 공유 설정 확인 후 링크로 교체","장비 배치 사진 넣기 (RealSense + 프로젝터)"]}
+   {h:"사진", imgs:[["media/lumo/setup.jpg","장비 배치: RealSense 카메라(왼쪽 아래)와 프로젝터(가운데). 주전자 위에 투사된 붉은 빛이 보입니다."],["media/lumo/detect-8objects.jpg","8개 물체 분할 결과. 물체별 마스크와 깊이 거리를 함께 표시합니다."],["media/lumo/checkerboard-detect.jpg","체커보드 코너 검출(9×6). 카메라-프로젝터 보정의 기준점입니다."],["media/lumo/graycode-stripes.jpg","그레이코드 줄무늬 투사. 프로젝터 픽셀과 카메라 픽셀의 대응을 얻습니다."],["media/lumo/pot-dist-a.jpg","보정 거리 A에서 냄비에 투사한 결과"],["media/lumo/pot-dist-b.jpg","보정 거리 B에서의 결과"],["media/lumo/pot-dist-c.jpg","보정 거리 C에서의 결과"]]},
+   {h:"시연 영상", ph:["시연 영상 또는 GIF 넣기 (주전자에 빛이 투사되는 장면) — 구글 드라이브 '캡스톤디자인' 공유 폴더에 있음, 공유 설정 확인 후 링크로 교체"]}
   ],
   todo:"[시연 영상은 구글 드라이브 캡스톤디자인 폴더에 있다고 하셨는데 이 세션에서는 자동으로 못 찾았습니다. 직접 링크를 공유해주시면 넣을게요. 논문 심사 결과가 나오면 업데이트하세요.]"
 },
@@ -455,7 +460,8 @@ var PROJECTS = [
      "테스트셋은 모델 결과를 보지 않고 라벨링하고, 최종 구성으로 한 번만 평가합니다."]},
    {h:"하드웨어 (팀 공동)", p:["핸드 그립(ERM+LRA 진동, 펠티어 온냉, XIAO ESP32-C3), 바람 모듈(80mm PWM 팬+서보, ESP32 DevKit), LED 모듈(SK6812 RGBW 스트립)으로 구성됩니다. 하드웨어는 제가 직접 담당한 부분은 아니며, 11월 초 기준 3D 프린팅·회로 설계가 진행 중입니다."]},
    {h:"현재 단계", p:["2026.11 중간발표 기준, 가중합 Baseline 구현 완료, 순간진동 오탐 확인 및 검수 진행, Omni 기반 음악·대사 필터 테스트를 마쳤습니다. 10~12주차에 재학습·평가, 13~15주차에 하드웨어 연동을 계획하고 있습니다."]},
-   {h:"사진 · 영상", ph:["발표자료 슬라이드 또는 데모 영상 넣기","하드웨어 사진 넣기"]}
+   {h:"사진", imgs:[["media/haptic4d/breadboard-prototype.jpg","브레드보드 시제품. 센서와 진동 구동부를 연결해 동작을 확인하는 단계입니다."],["media/haptic4d/housing-render.jpg","케이스 설계 렌더. 카메라, 배터리, 구동 모듈이 들어가는 구조입니다."]]},
+   {h:"영상", ph:["발표자료 슬라이드 또는 데모 영상 넣기"]}
   ],
   todo:"[12월 최종 결과가 나오면 반영하세요. 지금은 11월 중간발표 기준으로 작성했습니다.]"
 },
@@ -642,6 +648,7 @@ function block(b){
     c += '<div class="lg">'+b.stack.segs.map(function(s){return '<span><em class="'+s[2]+'"></em>'+s[0]+' <b>'+s[1].toFixed(3)+'s</b></span>'}).join("")+'</div><p class="small muted">'+b.stack.cap+'</p>';
   }
   if(b.p2) c += paras(b.p2);
+  if(b.imgs){ c += '<div class="shots">'+b.imgs.map(function(m){return '<figure><img loading="lazy" src="'+m[0]+'" alt="'+esc(m[1])+'"><figcaption>'+m[1]+'</figcaption></figure>'}).join('')+'</div>'; }
   if(b.ph){ cls='body pair'; c += b.ph.map(function(t){return '<div class="media">'+t+'</div>'}).join(""); }
   return '<div class="sec'+(wide?' wide':'')+'"><h2>'+b.h+'</h2><div class="'+cls+'">'+c+'</div></div>';
 }
