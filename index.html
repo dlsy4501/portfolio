@@ -54,6 +54,8 @@ section.pad{padding-block:80px}
 .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px 20px}
 .shots figure{margin:0}
 .shots img{width:100%;aspect-ratio:4/3;object-fit:contain;border-radius:6px;display:block;background:var(--sub)}
+.shots figure.full{grid-column:1/-1}
+.shots figure.full img{aspect-ratio:auto;height:auto;object-fit:initial}
 .shots figcaption{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.5}
 .media{background:var(--sub);border-radius:6px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--muted);font-size:15px;width:100%}
 .band .media{background:var(--bg)}
@@ -391,7 +393,7 @@ var PROJECTS = [
   todo:"[시연 영상은 구글 드라이브 캡스톤디자인 폴더에 있다고 하셨는데 이 세션에서는 자동으로 못 찾았습니다. 직접 링크를 공유해주시면 넣을게요. 논문 심사 결과가 나오면 업데이트하세요.]"
 },
 {
-  id:"didim", main:true, title:"디딤", sub:"저시력자 물건 찾기 — Lumo를 스마트폰 앱으로 옮긴 후속 프로젝트, 앱스토어 출시",
+  id:"didim", main:true, cover:"media/didim/app-find-cup.jpg", coverFit:1, title:"디딤", sub:"저시력자 물건 찾기 — Lumo를 스마트폰 앱으로 옮긴 후속 프로젝트, 앱스토어 출시",
   period:"2026 ~ 2027.1", team:"Lumo와 동일한 3인 팀 '보여요'", status:"앱스토어 출시 · 2027.1.13 발표 후 콘테스트 종료 예정", kind:"공모전 · 출시됨",
   summary:"\"컵 찾아줘\"라고 말하면 방향과 거리를 음성·진동으로 알려주는 저시력자용 물건 찾기 앱입니다. 고정 장비 없이 스마트폰만으로 Lumo의 기능을 구현했습니다. 팀명은 Lumo와 같은 '보여요', 앱 이름은 '디딤'입니다.",
   tags:["ARKit","SLAM","iOS","Swift"], hot:["앱스토어 출시","7팀 선발"],
@@ -419,7 +421,8 @@ var PROJECTS = [
      "<b>벽 탐지·공간 지도</b>: 벽을 탐지해 공간 지도를 구성합니다.",
      "<b>직접 등록</b>: 기본 목록(약 80종)에 없는 물건은 \"이거 기억해줘\"로 등록합니다. 원본 사진은 저장하지 않고 작은 썸네일과 형태 특징만 기기에 보관해 프라이버시를 지킵니다.",
      "<b>온디바이스</b>: 카메라·공간 데이터를 기기 밖으로 보내지 않고, 회원가입·광고·추적 없이 동작합니다. 앱스토어 개인정보 라벨도 \"데이터가 수집되지 않음\"입니다."]},
-   {h:"사진 · 영상", ph:["앱스토어 스크린샷 넣기 (6장 있음, 캡션은 비어 있어 직접 설명 필요)","지도 구성 / 안내 데모 영상 넣기"]}
+   {h:"앱 화면", imgs:[["media/didim/app-store-screens.jpg","앱스토어 등록 화면. 왼쪽부터 음성 시작 화면, 잘 보이는 색 고르기, 카메라 화면(말하기·기억하기), 찾은 물건 강조 표시, 설정(글자 크기, 강조 색 우선순위, 기억해 둔 물건).",1000]]},
+   {h:"영상", ph:["지도 구성 / 안내 데모 영상 넣기"]}
   ],
   todo:"[레포가 비공개라 아직 코드로 확인 못했습니다. 앱스토어 개발자 계정은 팀원(Sangjun Lee=이상준으로 추정) 명의로 등록돼 있습니다. 1월 발표가 끝나면 최종 결과로 업데이트하세요.]"
 },
@@ -468,7 +471,7 @@ var PROJECTS = [
      "테스트셋은 모델 결과를 보지 않고 라벨링하고, 최종 구성으로 한 번만 평가합니다."]},
    {h:"하드웨어 (팀 공동)", p:["핸드 그립(ERM+LRA 진동, 펠티어 온냉, XIAO ESP32-C3), 바람 모듈(80mm PWM 팬+서보, ESP32 DevKit), LED 모듈(SK6812 RGBW 스트립)으로 구성됩니다. 하드웨어는 제가 직접 담당한 부분은 아니며, 11월 초 기준 3D 프린팅·회로 설계가 진행 중입니다."]},
    {h:"현재 단계", p:["2026.11 중간발표 기준, 가중합 Baseline 구현 완료, 순간진동 오탐 확인 및 검수 진행, Omni 기반 음악·대사 필터 테스트를 마쳤습니다. 10~12주차에 재학습·평가, 13~15주차에 하드웨어 연동을 계획하고 있습니다."]},
-   {h:"사진", imgs:[["media/haptic4d/breadboard-prototype.jpg","브레드보드 시제품. 센서와 진동 구동부를 연결해 동작을 확인하는 단계입니다."],["media/haptic4d/housing-render.jpg","케이스 설계 렌더. 카메라, 배터리, 구동 모듈이 들어가는 구조입니다."]]},
+   {h:"사진", imgs:[["media/haptic4d/breadboard-prototype.jpg","브레드보드 시제품. 센서와 진동 구동부를 연결해 동작을 확인하는 단계입니다."],["media/haptic4d/housing-render.jpg","케이스 설계 렌더. 카메라, 배터리, 구동 모듈이 들어가는 구조입니다."],["media/haptic4d/labeling-tool.jpg","라벨링 도구. 후보 순간 진동 178개를 '필요함 / 필요 없음'으로 키보드로 빠르게 검수합니다.",720]]},
    {h:"영상", ph:["발표자료 슬라이드 또는 데모 영상 넣기"]}
   ],
   todo:"[12월 최종 결과가 나오면 반영하세요. 지금은 11월 중간발표 기준으로 작성했습니다.]"
@@ -500,7 +503,7 @@ var PROJECTS = [
      "샷 종류(포핸드·백핸드 등)와 공격 패턴 분석은 아직 없습니다.",
      "카메라가 고정된 영상에서만 코트 보정이 맞고, GPU 없이는 1분 영상에 7~10분쯤 걸립니다.",
      "자세 교정은 임팩트 프레임 자동 탐지, 시간 정렬(DTW), 정확한 3D 자세, 체형 보정이 없습니다."]},
-   {h:"분석 결과 화면", imgs:[["media/squash/frame_01.jpg","분석 결과 영상의 한 프레임. 선수 추적, 발 위치 표시, 스코어와 타구 수 오버레이가 함께 그려집니다."]]},
+   {h:"분석 결과 화면", imgs:[["media/squash/frame_01.jpg","분석 결과 영상의 한 프레임. 선수 추적, 발 위치 표시, 스코어와 타구 수 오버레이가 함께 그려집니다.",900],["media/squash/report1.jpg","경기 요약 리포트. 최종 점수, 랠리 수, 선수별 이동 거리·타격·득점, 점수 변화를 보여줍니다.",640],["media/squash/report2.jpg","랠리별 타격 수와 랠리 기록. 득점자는 마지막 타격자로 추정한 값입니다.",640]]},
    {h:"영상", ph:["분석 결과 영상(오버레이) 또는 코트 보정 화면 넣기"]}
   ],
   todo:"[레포(squash_pose_coach)를 읽고 채웠습니다. 공 모델 정확도 수치와 이동 거리 검증 결과(실측과 비교)가 있으면 넣으면 좋습니다. 샷 종류·공격 패턴 분석은 아직 코드에 없어서 '구현됨'에서 뺐습니다.]"
@@ -655,7 +658,7 @@ function block(b){
     c += '<div class="lg">'+b.stack.segs.map(function(s){return '<span><em class="'+s[2]+'"></em>'+s[0]+' <b>'+s[1].toFixed(3)+'s</b></span>'}).join("")+'</div><p class="small muted">'+b.stack.cap+'</p>';
   }
   if(b.p2) c += paras(b.p2);
-  if(b.imgs){ c += '<div class="shots">'+b.imgs.map(function(m){return '<figure><img loading="lazy" src="'+m[0]+'" alt="'+esc(m[1])+'"><figcaption>'+m[1]+'</figcaption></figure>'}).join('')+'</div>'; }
+  if(b.imgs){ c += '<div class="shots">'+b.imgs.map(function(m){return '<figure'+(m[2]?' class="full"':'')+'><img loading="lazy" src="'+m[0]+'" alt="'+esc(m[1])+'"'+(m[2]?' style="max-width:'+m[2]+'px"':'')+'><figcaption>'+m[1]+'</figcaption></figure>'}).join('')+'</div>'; }
   if(b.ph){ cls='body pair'; c += b.ph.map(function(t){return '<div class="media">'+t+'</div>'}).join(""); }
   return '<div class="sec'+(wide?' wide':'')+'"><h2>'+b.h+'</h2><div class="'+cls+'">'+c+'</div></div>';
 }
