@@ -612,6 +612,23 @@ var PROJECTS = [
 }
 ];
 
+var TEARDOWN = [
+  ["soundgo","손모양을 비전 모델로 인식해 코드 반주를 자동 재생. 노래+반주가 동시에 보이는 영상 자체가 콘텐츠가 되어 바이럴.","비전 인식 → 반응"],
+  ["Kyro","러닝의 유일한 경쟁축이던 기록(숫자)을 지도 위 영토 점유로 치환해 시각적 성취감을 만듦.","데이터 → 시각적 은유"],
+  ["그늘길찾기","건물 3D 높이와 태양 각도를 계산해 여름철 그늘 경로를 추천하는 실용형 유틸리티.","데이터 → 시각적 은유"],
+  ["메트로타이핑","타자 속도라는 추상적 숫자를 노선 위 이동 거리로 치환, 실시간 경쟁까지 결합.","데이터 → 시각적 은유"],
+  ["BeReal","기능을 더하지 않고 하루 1회 게시·보정 금지 같은 제약을 걸어 오히려 진정성을 확보.","제약 기반 설계"],
+  ["RunCat","메뉴바라는 제약된 공간 안에서 CPU 사용률 같은 숨은 상태를 캐릭터 움직임으로 즉각 체감되게 변환.","데이터 → 시각적 은유"],
+  ["Pink Trombone","성대 물리 시뮬레이션을 직접 조작하게 해 '악기'로 만듦. 어설픈 소리가 오히려 조작의 재미를 강화.","조작 가능한 시뮬레이션"],
+  ["낚시릴 게임화","센서로 비거리·캐스팅 횟수를 계측해 감각 기반 취미를 정량화하고 업적 뱃지로 게임화.","정량화 + 업적 시스템"]
+];
+var PATTERNS = [
+  ["데이터 → 시각적 은유","숫자·로그로만 존재해 안 보이던 상태를 지도·거리·캐릭터 같은 직관적 이미지로 번역."],
+  ["비전 인식 → 반응 트리거","사람의 행동을 비전 모델로 인식해 즉각적인 반응을 일으킴. 공개 모델을 쓰면 구현 난이도가 낮음."],
+  ["조작 가능한 시뮬레이션","분류가 아니라 물리 시뮬레이션 자체를 조작하게 해서, 결과물보다 조작 과정 자체가 재미가 됨."],
+  ["정량화 + 업적 시스템","감각으로만 느끼던 경험에 기록을 더해 수치화하고, 작은 목표 단위로 쪼개 지속 동기를 만듦."],
+  ["제약 기반 설계","기능을 더하기보다 제약을 걸 때(희소성, 상호성 강제 등) 오히려 몰입과 진정성이 생김."]
+];
 
 var app = document.getElementById("app");
 var CLEAN = false;
@@ -624,6 +641,19 @@ function head(){
 }
 function foot(){
   return '<div class="band"><div class="in"><footer class="end"><span>'+PROFILE.name+' · '+PROFILE.role+'</span><span><button class="link" id="cleanbtn" type="button">'+(CLEAN?"작성 메모 보이기":"작성 메모 숨기기")+'</button> · <a href="'+PROFILE.github+'" target="_blank" rel="noopener">github.com/dlsy4501</a></span></footer></div></div>';
+}
+function teardown(){
+  var h = '<div class="band"><section class="in pad">';
+  h += '<div class="sechead"><h2>Product Teardown</h2><a class="small muted" href="https://github.com/dlsy4501/dlsy4501/blob/main/PRODUCT_ANALYSIS.md" target="_blank" rel="noopener">GitHub에서 더 보기 ↗</a></div>';
+  h += '<p class="muted" style="max-width:42em;margin-bottom:32px">눈에 띄는 서비스를 볼 때마다 "왜 좋은가"를 역으로 분석하고 재사용 가능한 패턴으로 정리합니다.</p>';
+  h += '<div class="tw tt" style="margin-bottom:40px"><table><thead><tr><th>서비스</th><th>차별점</th><th>패턴</th></tr></thead><tbody>'+TEARDOWN.map(function(t){
+    return '<tr><td><b>'+t[0]+'</b></td><td>'+t[1]+'</td><td>'+t[2]+'</td></tr>';
+  }).join("")+'</tbody></table></div>';
+  h += '<div class="cols">'+PATTERNS.map(function(p){
+    return '<div><h3>'+p[0]+'</h3><p>'+p[1]+'</p></div>';
+  }).join("")+'</div>';
+  h += '</section></div>';
+  return h;
 }
 function home(){
   var mains = PROJECTS.filter(function(p){return p.main});
@@ -641,6 +671,7 @@ function home(){
   h += '<div class="band"><section class="in pad"><div class="sechead"><h2>그 밖의 프로젝트</h2></div><div class="list">'+rest.map(function(p){
     return '<a href="#'+p.id+'"><h3>'+p.title+'</h3><p class="muted">'+p.sub+'</p><span class="yr">'+p.period+'</span></a>';
   }).join("")+'</div></section></div>';
+  h += teardown();
   h += '<section class="in pad skills"><div class="sechead"><h2>기술</h2></div><dl class="rows" style="margin-top:0">'+PROFILE.skills.map(function(s){return '<div class="row"><dt>'+s[0]+'</dt><dd>'+s[1]+'</dd></div>'}).join("")+'</dl></section>';
   return h + foot();
 }
